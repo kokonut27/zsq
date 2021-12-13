@@ -1,0 +1,2 @@
+run = "python zsq/main.py"
+language = "nix"
