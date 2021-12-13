@@ -1,14 +1,60 @@
 import time, os, sys, getpass, re, string
 
+red = "\033[0;91m"
+w = "\033[0;37m"
+black = "\033[0;30m"
+red = "\033[0;31m"
+green = "\033[0;32m"
+yellow = "\033[0;33m"
+blue = "\033[0;34m"
+magenta = "\033[0;35m"
+cyan = "\033[0;36m"
+white = "\033[0;37m"
+bblack = "\033[0;90m"
+bred = "\033[0;91m"
+bgreen = "\033[0;92m"
+byellow = "\033[0;93m"
+bblue = "\033[0;94m"
+bmagenta = "\033[0;95m"
+bcyan = "\033[0;96m"
+bwhite = "\033[0;97m"
+bold = '\033[1m'
+end = '\033[0m'
+pink = '\033[95m'
+
+
+#all errors
+class InvalidVariableError(Exception):
+  pass
+class InvalidSyntaxError(Exception):
+  pass
+class InvalidIndentationError(Exception):
+  pass
+class InvalidModuleError(Exception):
+  pass
+class InvalidStringIntError(Exception):
+  pass
+class TemplateError(Exception):
+  pass
+class nonexistantfilepath(Exception):
+  pass
+class nonzsqfile(Exception):
+  pass
+
+
 fp = input('filepath: ')
 
 if '.zsq' in fp:
   try:
     f = open(f'{fp}')
   except:
-    raise Exception("no such file exists!")
+    raise nonexistantfilepath("no such file exists!")
 else:
-  raise Exception("the file isn't a '.zsq' file!")
+  raise nonzsqfile("the file isn't a '.zsq' file!")
+
+os.system("clear")
+print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
+
 
 content = f.read()
 colist = content.split("\n")
@@ -17,9 +63,45 @@ for i in colist:
     if i:
         load += 1
 
+while True:
+    cmd = input(">>> ")
+    if "zsq index.zsq" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "zsqindex.zsq":
+            break
+    if "run" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "run":
+            break
+    if "zsq install popup" in cmd:
+        print("installing popup")
+        # Add loading and installing.
+    elif "clear" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "clear":
+            os.system("clear")
+            print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
+        else:
+            os.system(str(cmd))
+    elif "quit" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "quit":
+        quit(red + bold + "program has been stopped" + w)
+    elif "exit" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "exit":
+        quit(red + bold + "program has been stopped" + w)
+    else:
+        os.system(str(cmd))
+
 num = 0
 print("Compiling script")
-while (num < load):
+while num < load:
     print("Compiling... /")
     time.sleep(0.08)
     os.system("clear")
@@ -41,20 +123,6 @@ def wait_until(somepredicate, timeout, period=0.25, *args, **kwargs):
       if somepredicate(*args, **kwargs): return True
       time.sleep(period)
     return False
-
-#all errors
-class InvalidVariableError(Exception):
-  pass
-class InvalidSyntaxError(Exception):
-  pass
-class InvalidIndentationError(Exception):
-  pass
-class InvalidModuleError(Exception):
-  pass
-class InvalidStringIntError(Exception):
-  pass
-class TemplateError(Exception):
-  pass
 
 
 allvars = {}
@@ -129,10 +197,6 @@ readline2 = 0
 for lines in file.readlines():
     #print(lines)
 
-    """if "/*" in lines:
-      readline2=1
-      #print(wait_until("*/", 0))
-      wait_until("*/", 0)"""
     if readline2 == 1:
       readline2 = 0
       continue
@@ -274,3 +338,10 @@ for lines in file.readlines():
 
     else:
       pass
+
+while True:
+  try:
+    cmd = input(blue + bold + "~/zsq" + end + w + "$ ")
+    os.system(str(cmd))
+  except:
+    break
