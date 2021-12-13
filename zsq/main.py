@@ -2,7 +2,7 @@ import time, os, sys, getpass, re, string
 
 fp = input('filepath: ')
 
-if '.zsq' in fp:#hmmmm
+if '.zsq' in fp:
   try:
     f = open(f'{fp}')
   except:
@@ -12,6 +12,24 @@ else:
 
 content = f.read()
 colist = content.split("\n")
+load = 0
+for i in colist:
+    if i:
+        load += 1
+
+num = 0
+print("Compiling script")
+while (num < load):
+    print("Compiling... /")
+    time.sleep(0.08)
+    os.system("clear")
+    print("Compiling... -")
+    time.sleep(0.08)
+    os.system("clear")
+    print("Compiling... \ ")
+    time.sleep(0.08)
+    os.system("clear")
+    num += 1
 
 def check():
     df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
@@ -252,7 +270,7 @@ for lines in file.readlines():
         except:
           raise InvalidSyntaxError("an error occurred while trying to time.rest!")
       else:
-        raise InvalidModuleError("the 'time' module isn't imported or it doesn't exist!") 
+        raise InvalidModuleError("the 'time' module isn't imported or it doesn't exist!")
 
     else:
       pass

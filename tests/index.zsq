@@ -1,0 +1,9 @@
+import("time")
+
+// eeee
+
+print("e")
+
+time.rest(2)
+
+print("nou")

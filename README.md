@@ -1,4 +1,4 @@
-# zsq
+# z^2
 > a complex language with high level programming and moderate syntax. 
 
 ## About
