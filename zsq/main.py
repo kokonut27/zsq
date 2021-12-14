@@ -369,9 +369,69 @@ for lines in file.readlines():
     else:
       pass
 
+
 while True:
-  try:
-    cmd = input(blue + bold + "~/zsq" + end + w + "$ ")
-    os.system(str(cmd))
-  except:
-    break
+    cmd = input(">>> ")
+    if "zsq index.zsq" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "zsqindex.zsq":
+            break
+    if "zsq run" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "zsqrun":
+            break
+    if "zsq install popup" in cmd:
+        print("installing popup")
+        # Add loading and installing.
+    elif "zsq clear" in cmd:
+        while " " in cmd:
+            cmd = cmd.replace(" ", "")
+        if cmd == "zsqclear":
+            os.system("clear")
+            print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
+        else:
+            os.system(str(cmd))
+    elif "zsq quit" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsqquit":
+        quit(red + bold + "program has been stopped" + w)
+    elif "zsq exit" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsqexit":
+        quit(red + bold + "program has been stopped" + w)
+    elif "zsq help" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsqhelp":
+        print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\tindex.zsq\t\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the Z^2 console\n\texit\t\t\t  Quit the Z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits")
+    elif "zsq credits" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsqcredits":
+        print("Credits\n\n\tHead developer\tJBYT27")
+    elif "zsq -c" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsq-c":
+        print("Credits\n\n\tHead developer\tJBYT27")
+    elif "zsq --credits" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsq--credits":
+        print("Credits\n\n\tHead developer\tJBYT27")
+    elif "zsq -h" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsq-h":
+        print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\tindex.zsq\t\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the Z^2 console\n\texit\t\t\t  Quit the Z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits")
+    elif "zsq --help" in cmd:
+      while " " in cmd:
+        cmd = cmd.replace(" ", "")
+      if cmd == "zsq--help":
+        print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\tindex.zsq\t\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the Z^2 console\n\texit\t\t\t  Quit the Z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits")
+    else:
+        os.system(str(cmd))
