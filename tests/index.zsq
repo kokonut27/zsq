@@ -10,6 +10,6 @@ print("nou ) ) )\n ee \n eeegdfgsdfg")
 
 time.rest(1)
 
-var e = "e"
+var er = "e"
 
-print(^"{e}")
+print(^"{er}")
