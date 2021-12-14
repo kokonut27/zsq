@@ -3,6 +3,24 @@ import time, os, sys, getpass, re, string
 def zsq_version():
   return "Z^2 v0.1.0"
 
+def helpe(function):
+  if function == "help":
+    return "Prints helpful information"
+  elif function == "run":
+    return "Runs a program and/or project"
+  elif function == "install":
+    return "Installs a package or module"
+  elif function == "clear":
+    return "Clears the console"
+  elif function == "version":
+    return "Prints the current version of z^2"
+  elif function == "quit":
+    return "Quits the program"
+  elif function == "credits":
+    return "Prints credits"
+  else:
+    return (bold + red + "no such function exists!" + w)
+
 def console():
   while True:
     cmd = input(">>> ")
@@ -19,7 +37,12 @@ def console():
     if "zsq install popup" in cmd:
         print("installing popup")
         # Add loading and installing.
-
+    elif "zsq help " in cmd:
+      cmd = cmd[9:]
+      try:
+        print(f"{cmd}: "+helpe(cmd))
+      except:
+        print(bold + red + "no such function exists!" + w)
     elif "zsq clear" in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
