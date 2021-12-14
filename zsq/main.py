@@ -145,12 +145,12 @@ def Print():#add f'string
       res = lines.partition(wrd)[2]
       # print(res)
       if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
-        raise InvalidSyntaxError("the 'print starting quotations and ending quotations are different!")
+        raise InvalidSyntaxError("the 'print' starting quotations and ending quotations are different!")
       else:
         res = res.replace("\")","")
         res = res.replace('\')',"")
-        res = res.replace("\n", "\n")
-        res = res.replace("\t", "\t")
+        res = res.replace("\\n", "\n")
+        res = res.replace("\\t", "\t")
         if "\"" in res:
           split_string = res.split("\")", -1)
         elif "'" in res:
@@ -160,8 +160,8 @@ def Print():#add f'string
         res = split_string[0]
         res = res.replace("\")","")
         res = res.replace('\')',"")
-        res = res.replace("\n", "\n")
-        res = res.replace("\t", "\t")
+        res = res.replace("\\n", "\n")
+        res = res.replace("\\t", "\t")
         #colors: res = res.replace("{red}", red)
         res = res.replace('"', "")
         res = res.replace("'", "")
@@ -271,7 +271,7 @@ for lines in file.readlines():
                 Print()
               
               elif "prompt(" in newvar:
-                e
+                pass
 
             else:
               newvar = str(newvar) # makes sure its a string
