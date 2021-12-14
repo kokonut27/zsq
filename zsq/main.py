@@ -349,7 +349,35 @@ for lines in file.readlines():
       #newvar = variable;
       # print(newvar)
       
-      if " " in newvar:
+      while " " in newvar:
+        find_space = newvar.find("\"")
+        if find_space == -1:
+          find_space1 = newvar.find("\'")
+          if find_space1 == -1:
+            for i in newvar:
+              if i in ["1","2","3","4","5","6","7","8","9","0"]:
+                newvar_type = int
+              else:
+                if newvar in ["true", "false"]:
+                  newvar_type = bool
+                else:
+                  print(bold + red + "variables must be named!" + w)
+                  exit()
+          else:
+            newvar_type = str
+        else:
+          newvar_type = str
+        if find_space != -1:
+          newvar2 = newvar[find_space:]
+        else:
+          if find_space1 != -1:
+            newvar2 = newvar[find_space:]
+          else:
+            print(bold + red + "there was an error with encountering the variable! try again!" + w)
+            exit()
+        
+        newvar2 = newvar2.replace(" ", "")
+
         if "=" in newvar:
           idk = []
           Continue = True
@@ -371,10 +399,7 @@ for lines in file.readlines():
             
           if "'" in newvar or "\"" in newvar:
             if newvar in functions:
-              if "print(" in newvar:
-                Print()
-              
-              elif "prompt(" in newvar:
+              if "prompt(" in newvar:
                 pass
 
             else:
@@ -390,15 +415,12 @@ for lines in file.readlines():
             allvars[newvar] = True
           elif newvar == "false":
             allvars[newvar] = False
-
           else:
             print(bold + red + "variables must be named after there is a equal sign!" + w)
             exit()
         else:
           print(bold + red + "variables cannot include spaces!" + w)
           exit()
-      else:
-        allvars[newvar] = 0
       
     elif "prompt(" in lines:
       wrd = "prompt("
