@@ -8,5 +8,6 @@ setup(
     author="JBYT27",
     license="Apache 2.0",
     packages=["zsq"],
+    install_requires=["click"],
     scripts=["scripts/zsq"],
 )
