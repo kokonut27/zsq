@@ -6,7 +6,7 @@ import re
 import string
 
 def zsq_version():
-  return "Z^2 v0.1.0"
+  return "z^2 v0.1.0"
 
 def helpe(function):
   if function == "help":
@@ -122,6 +122,7 @@ def console():
     else:
         os.system(str(cmd))
 
+
 red = "\033[0;91m"
 w = "\033[0;37m"
 black = "\033[0;30m"
@@ -146,16 +147,6 @@ pink = '\033[95m'
 
 
 #all errors
-class InvalidVariableError(Exception):
-  pass
-class InvalidSyntaxError(Exception):
-  pass
-class InvalidIndentationError(Exception):
-  pass
-class InvalidModuleError(Exception):
-  pass
-class InvalidStringIntError(Exception):
-  pass
 class nonexistantfilepath(Exception):
   pass
 class nonzsqfile(Exception):
@@ -171,6 +162,7 @@ if '.zsq' in fp:
     raise nonexistantfilepath("no such file exists!")
 else:
   raise nonzsqfile("the file isn't a '.zsq' file!")
+
 
 os.system("clear")
 print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
@@ -234,7 +226,8 @@ def Print():#add f'string
       res = lines.partition(wrd)[2]
       # print(res)
       if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
-        raise InvalidSyntaxError("the 'print' starting quotations and ending quotations are different!")
+        print(bold + red + "the 'print' starting quotations and ending quotations are different!" + w)
+        exit()
       else:
         res = res.replace("\")","")
         res = res.replace('\')',"")
@@ -245,7 +238,9 @@ def Print():#add f'string
         elif "'" in res:
           split_string = res.split("\')", -1)
         else:
-          raise InvalidSyntaxError("The 'print' statement is missing quotations!")
+          print(bold + red + "the 'print' statement is missing quotations!" + w)
+          exit()
+          
         res = split_string[0]
         if res[0] == "^": # This allows variables to be referenced inside quotations, like f' strings
           sq_str = True
@@ -278,13 +273,16 @@ def Print():#add f'string
               else:
                   #print(var)
                   #print(res)
-                raise InvalidVariableError(f"'{var}' variable does not exist!")
+                  print(bold + red + f"'{var}' variable does not exist!" + w)
+                  exit()
+          res = res.replace("^", "")
         print(res)
     else:
-      raise InvalidSyntaxError("the 'print' statement must have a closing \")\"!")
+      print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
+      exit()
   except:
     print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
-    break
+    exit()
 
 
 
@@ -327,9 +325,16 @@ for lines in file.readlines():
       raise InvalidIndentationError(f"line {line}, the indentation does not fit the other statements!")
     '''
     
-    if lines[:2] == "//" or "//" in lines:
+    if lines[:2] == "//":
       pass
       read_line = 0
+    elif "//" in lines:
+      try:
+        e = lines.find("//")
+        if e != -1:
+          lines = lines[:e]
+      except:
+        pass
     elif "import(\"time\")" in lines or "import('time')" in lines:
       time_module = 1
     elif "import(\"os\")" in lines or "import('os')" in lines:
@@ -342,6 +347,7 @@ for lines in file.readlines():
       newvar.replace('\"', '')
       newvar = split_string[0]
       #newvar = variable;
+      # print(newvar)
       
       if " " in newvar:
         if "=" in newvar:
@@ -363,7 +369,7 @@ for lines in file.readlines():
           idk = "".join(idk)
           newvar = newvar.replace(idk, "")
             
-          if "'" in newvar or "\"" in newvar or "`" in newvar or "os.userinfo(" in newvar:
+          if "'" in newvar or "\"" in newvar:
             if newvar in functions:
               if "print(" in newvar:
                 Print()
@@ -377,7 +383,8 @@ for lines in file.readlines():
                 newvar = newvar.replace(newvar[-1], "")
                 #newvar = newvar.replace(newvar[0], "")
               else:
-                raise InvalidSyntaxError("starting quotations and end quotations must be the same!")
+                print(bold + red + "starting quotations and end quotations must be the same!" + w)
+                exit()
               allvars[newvar] = newvar
           elif newvar == "true":
             allvars[newvar] = True
@@ -385,9 +392,11 @@ for lines in file.readlines():
             allvars[newvar] = False
 
           else:
-            raise InvalidSyntaxError("variables must be named after there is a equal sign!")
+            print(bold + red + "variables must be named after there is a equal sign!" + w)
+            exit()
         else:
-          raise InvalidSyntaxError("variables cannot include spaces!")
+          print(bold + red + "variables cannot include spaces!" + w)
+          exit()
       else:
         allvars[newvar] = 0
       
