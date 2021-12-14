@@ -1,4 +1,9 @@
-import time, os, sys, getpass, re, string
+import time
+import os
+import sys
+import getpass
+import re
+import string
 
 def zsq_version():
   return "Z^2 v0.1.0"
@@ -150,8 +155,6 @@ class InvalidIndentationError(Exception):
 class InvalidModuleError(Exception):
   pass
 class InvalidStringIntError(Exception):
-  pass
-class TemplateError(Exception):
   pass
 class nonexistantfilepath(Exception):
   pass
