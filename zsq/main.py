@@ -247,35 +247,44 @@ def Print():#add f'string
         else:
           raise InvalidSyntaxError("The 'print' statement is missing quotations!")
         res = split_string[0]
+        if res[0] == "^": # This allows variables to be referenced inside quotations, like f' strings
+          sq_str = True
+        else:
+          sq_str = False
         res = res.replace("\")","")
         res = res.replace('\')',"")
         res = res.replace("\\n", "\n")
         res = res.replace("\\t", "\t")
-        #colors: res = res.replace("{red}", red)
+        res = res.replace("\\)", ")")
+        res = res.replace("\\(", "(")
+        res = res.replace('\\"', '"')
+        res = res.replace("\\'", "'")
+        # colors: res = res.replace("{red}", red)
         res = res.replace('"', "")
         res = res.replace("'", "")
         res = res.replace(")","")
-        # print(res)
-
-        if "{{" in res:
-          if "}}" in res:
-            start = "{{"
-            end = "}}"
-            check = res[res.find(start) + len(start):res.rfind(end)]
-            if check in allvars:
-              res = res.replace("{{", "")
-              res = res.replace("}}", "")
-              dffdfdfdf = allvars[check]
-              res = res.replace(check, str(dffdfdfdf))
-            else:
-                #print(var)
-                #print(res)
-              raise InvalidVariableError(f"'{var}' variable does not exist!")
+        
+        if sq_str:
+          if "{" in res:
+            if "}" in res:
+              start = "{"
+              end = "}"
+              check = res[res.find(start) + len(start):res.rfind(end)]
+              if check in allvars:
+                res = res.replace("{", "")
+                res = res.replace("}", "")
+                dffdfdfdf = allvars[check]
+                res = res.replace(check, str(dffdfdfdf))
+              else:
+                  #print(var)
+                  #print(res)
+                raise InvalidVariableError(f"'{var}' variable does not exist!")
         print(res)
     else:
       raise InvalidSyntaxError("the 'print' statement must have a closing \")\"!")
   except:
-    raise InvalidSyntaxError("the 'print' statement must have a closing \")\"!")
+    print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
+    break
 
 
 

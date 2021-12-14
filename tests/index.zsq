@@ -6,4 +6,8 @@ print("e")
 
 time.rest(2)
 
-print("nou\n ee \n eeegdfgsdfg")
+print("nou ) ) )\n ee \n eeegdfgsdfg")
+
+time.rest(1)
+
+print(^"{e}")
