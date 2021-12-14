@@ -186,7 +186,10 @@ for i in colist:
 console()
 
 num = 0
+os.system("clear")
 print("Compiling script")
+time.sleep(1)
+os.system("clear")
 while num < load:
     print("Compiling... /")
     time.sleep(0.08)
