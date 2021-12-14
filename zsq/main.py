@@ -65,10 +65,10 @@ for i in colist:
 
 while True:
     cmd = input(">>> ")
-    if "zsq index.zsq" in cmd:
+    if f"zsq {fp}" in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
-        if cmd == "zsqindex.zsq":
+        if cmd == f"zsq{fp}":
             break
     if "zsq run" in cmd:
         while " " in cmd:
@@ -372,10 +372,10 @@ for lines in file.readlines():
 
 while True:
     cmd = input(">>> ")
-    if "zsq index.zsq" in cmd:
+    if "zsq "+fp in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
-        if cmd == "zsqindex.zsq":
+        if cmd == "zsq"+fp:
             break
     if "zsq run" in cmd:
         while " " in cmd:
