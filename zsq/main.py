@@ -78,6 +78,7 @@ while True:
     if "zsq install popup" in cmd:
         print("installing popup")
         # Add loading and installing.
+
     elif "zsq clear" in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
@@ -385,6 +386,7 @@ while True:
     if "zsq install popup" in cmd:
         print("installing popup")
         # Add loading and installing.
+        
     elif "zsq clear" in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
