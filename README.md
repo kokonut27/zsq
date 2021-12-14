@@ -1,7 +1,7 @@
 # z^2
 > a complex language with high level programming and moderate syntax. 
 
-## About
+## Get started
 ### Usage
 1. Clone this repository: 
 ```
@@ -16,6 +16,13 @@ $ cd zsq
 $ python main.py
 ```
 Enter the filepath, and now you're done!
+
+### z^2 console
+To get started with more features of z^2, enter the following command in the z^2 console:
+
+```
+>>> zsq --help
+```
 
 ### Contributing
 Feel free to contribute by [forking](https://github.com/JBYT27/zsq/network/members) the repo, and leaving a pull request!
