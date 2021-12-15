@@ -55,16 +55,12 @@ def console():
         if cmd == "zsqclear":
             os.system("clear")
             print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
-        else:
-            os.system(str(cmd))
     elif "clear" in cmd:
         while " " in cmd:
             cmd = cmd.replace(" ", "")
         if cmd == "clear":
             os.system("clear")
             print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
-        else:
-            os.system(str(cmd))
     elif "zsq version" in cmd:
       while " " in cmd:
         cmd = cmd.replace(" ", "")
@@ -121,7 +117,7 @@ def console():
       if cmd == "zsq--help":
         print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\t-v, --version\tPrint current version of z^2\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\t[FILENAME].zsq\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the z^2 console\n\texit\t\t\t  Quit the z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits\n\tversion\t\t\t  Prints current version of Z^2")
     else:
-        os.system(str(cmd))
+      print(f"{cmd}: not found!")
 
 
 red = "\033[0;91m"
@@ -495,6 +491,3 @@ for lines in file.readlines():
 
     else:
       pass
-
-
-console()
