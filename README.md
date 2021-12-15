@@ -24,5 +24,13 @@ To get started with more features of z^2, enter the following command in the z^2
 >>> zsq --help
 ```
 
+### Special Ascii chars
+* `\)`: `)`
+* `\(`: `(`
+* `\n`: `newline`
+* `\t`: `tab`
+* `\"`: `"`
+* `\'`: `'`
+
 ### Contributing
 Feel free to contribute by [forking](https://github.com/JBYT27/zsq/network/members) the repo, and leaving a pull request!
