@@ -488,6 +488,20 @@ for lines in file.readlines():
       else:
         print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
         exit()
+    elif "time.time(":
+      if time_module == 1:
+        wrd = "time.time("
+        res = lines.partition(wrd)[2]
+        try:
+          res = res.replace(")", "")
+
+          pass
+        except:
+          print(bold + red + "an error occurred while trying to time.time!" + w)
+          exit()
+      else:
+        print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
+        exit()
 
     else:
       pass
