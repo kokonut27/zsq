@@ -221,7 +221,7 @@ input3 = "Undefined input"
 functions = ["print(", "prompt("]
 
 def Print():#add f'string
-  try:
+  #try:
     if '")' in lines or "')" in lines:
       wrd = "print("
       res = lines.partition(wrd)[2]
@@ -266,6 +266,8 @@ def Print():#add f'string
               start = "{"
               end = "}"
               check = res[res.find(start) + len(start):res.rfind(end)]
+              # print(check)
+              # print(allvars)
               if check in allvars:
                 res = res.replace("{", "")
                 res = res.replace("}", "")
@@ -274,16 +276,16 @@ def Print():#add f'string
               else:
                   #print(var)
                   #print(res)
-                  print(bold + red + f"'{var}' variable does not exist!" + w)
+                  print(bold + red + f"'{varname}' variable does not exist!" + w)
                   exit()
           res = res.replace("^", "")
         print(res)
     else:
       print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
       exit()
-  except:
-    print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
-    exit()
+  #except:
+    #print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
+    #exit()
 
 
 
@@ -378,6 +380,13 @@ for lines in file.readlines():
             exit()
         
         newvar2 = newvar2.replace(" ", "")
+        # print(newvar)
+        e = newvar.find("=")
+        if e != -1:
+          varname = newvar[:e]
+          varname = varname.replace(" ", "")
+        # print(varname)
+        # print(newvar2)
 
         if "=" in newvar:
           idk = []
@@ -400,7 +409,9 @@ for lines in file.readlines():
             
           if "'" in newvar or "\"" in newvar:
             if newvar in functions:
-              if "prompt(" in newvar:
+              if "print(" in newvar:
+                Print()
+              elif "prompt(" in newvar:
                 pass
 
             else:
@@ -411,40 +422,53 @@ for lines in file.readlines():
               else:
                 print(bold + red + "starting quotations and end quotations must be the same!" + w)
                 exit()
-              allvars[newvar] = newvar
+              allvars[varname] = newvar
+              # print(allvars)
           elif newvar == "true":
-            allvars[newvar] = True
+            allvars[varname] = True
           elif newvar == "false":
-            allvars[newvar] = False
+            allvars[varname] = False
           else:
             print(bold + red + "variables must be named after there is a equal sign!" + w)
             exit()
         else:
           print(bold + red + "variables cannot include spaces!" + w)
           exit()
+        # print(newvar)
       
     elif "prompt(" in lines:
       wrd = "prompt("
       var = lines.partition(wrd)[2]
-      split_string = var.split(");", -1)
-      var.replace(')','')
-      var.replace('\"',"")
-      var.replace('\'',"")
-      var = split_string[0]
-      var.strip(")")
+      split_string = var.split(")", -1)
+      var = var.replace(')','')
+      var = var.replace('\"',"")
+      var = var.replace('\'',"")
+      var = var.replace("\\n", "\n")
+      var = var.replace("\\t", "\t")
+      var = var.replace("\\)", ")")
+      var = var.replace("\\(", "(")
+      var = var.replace('\\"', '"')
+      var = var.replace("\\'", "'")
+      # var = var = split_string[0]
+      # var = var.strip(")")
+      
+      input(var)
 
+      """
       if var in allvars:
-        var = input()
-        allvars[newvar] = var
+        # var = input()
+        # input()
+        # allvars[varname] = var
       else:
         if var not in allvars:
-          raise InvalidVariableError(f"'{var}' variable does not exist!")
+          print(bold + red + f"'{var}' variable does not exist!" + w)
+          exit()
         else:
           pass
+      """
 
 
     elif "print(" in lines:
-      # print("e")
       Print()
     
     elif "if " in lines:
@@ -460,11 +484,14 @@ for lines in file.readlines():
             if i in ["1","2","3","4","5","6","7","8","9","0"]:
               time.sleep(int(res))
             else:
-              raise InvalidStringIntError("strings cannot be inside integer values!")
+              print(bold + red + "strings cannot be inside integer values!" + w)
+              exit()
         except:
-          raise InvalidSyntaxError("an error occurred while trying to time.rest!")
+          print(bold + red + "an error occurred while trying to time.rest!" + w)
+          exit()
       else:
-        raise InvalidModuleError("the 'time' module isn't imported or it doesn't exist!")
+        print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
+        exit()
 
     else:
       pass

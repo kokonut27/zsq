@@ -13,3 +13,5 @@ time.rest(1)
 var er = "e"
 
 print(^"{er}")
+
+prompt("e ")
