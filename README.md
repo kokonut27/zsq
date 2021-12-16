@@ -33,8 +33,25 @@ To get started with more features of z^2, enter the following command in the z^2
 * `\'`: `'`
 
 ### Simple example
-```
+> This is a current work in progress as of right now
 
+```
+function Fibonacci(num) {
+  whatif num == 0 {
+    return 0
+  }
+	elseif num == 1 {
+    return 1
+  } 
+  elseif num == 2 {
+    return 1
+  }
+	else {
+    return Fibonacci(num-1) + Fibonacci(num-2)
+  }
+}
+
+print(Fibonacci(7))
 ```
 
 ### Contributing
