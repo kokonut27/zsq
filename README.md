@@ -40,13 +40,13 @@ function Fibonacci(num) {
   whatif num == 0 {
     return 0
   }
-	elseif num == 1 {
+  elseif num == 1 {
     return 1
   } 
   elseif num == 2 {
     return 1
   }
-	else {
+  else {
     return Fibonacci(num-1) + Fibonacci(num-2)
   }
 }
