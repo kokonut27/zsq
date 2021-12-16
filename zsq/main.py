@@ -115,7 +115,7 @@ def console():
       while " " in cmd:
         cmd = cmd.replace(" ", "")
       if cmd == "zsq--help":
-        print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\t-v, --version\tPrint current version of z^2\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\t[FILENAME].zsq\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the z^2 console\n\texit\t\t\t  Quit the z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits\n\tversion\t\t\t  Prints current version of Z^2")
+        print("zsq\n\nUSAGE:\n\tzsq [SUBCOMMAND]\n\nOPTIONS:\n\t-c, --credits\tPrint credits\n\t-h, --help\tPrint helpful options\n\t-v, --version\tPrint current version of z^2\n\nSUBCOMMANDS:\n\thelp\t\t\t  Print helpful options\n\t[FILENAME].zsq\t  Run program and/or project\n\trun\t\t\t\t  Run program and/or project\n\tinstall [PACKAGE] Install packages or modules\n\tquit\t\t\t  Quit the z^2 console\n\texit\t\t\t  Quit the z^2 console\n\tclear\t\t\t  Clears the console\n\tcredits\t\t\t  Prints credits\n\tversion\t\t\t  Prints current version of z^2")
     else:
       print(f"{cmd}: not found!")
 
@@ -214,17 +214,39 @@ var1 = "Undefined variable"
 input1 = "Undefined input"
 input2 = "Undefined input"
 input3 = "Undefined input"
-functions = ["print(", "prompt("]
+functions = ["print(", "prompt(", "time.time("]
+
+def timeTime():
+  if time_module == 1:
+        wrd = "time.time("
+        res = lines.partition(wrd)[2]
+        try:
+          res = res.replace(")", "")
+
+          if res != "":
+            print(bold + red + "no arguments must be made inside of the function time.time!" + w)
+            exit()
+        except:
+          print(bold + red + "an error occurred while trying to time.time!" + w)
+          exit()
+  else:
+        print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
+        exit()
 
 def Print():#add f'string
   #try:
-    if '")' in lines or "')" in lines:
+    if '")' in lines or "')" in lines or ")" in lines:
       wrd = "print("
       res = lines.partition(wrd)[2]
+      res2 = lines.partition(wrd)[2]
       # print(res)
       if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
-        print(bold + red + "the 'print' starting quotations and ending quotations are different!" + w)
-        exit()
+        for i in functions:
+          if i in res:
+            pass
+        else:
+          print(bold + red + "the 'print' starting quotations and ending quotations are different!" + w)
+          exit()
       else:
         res = res.replace("\")","")
         res = res.replace('\')',"")
@@ -235,8 +257,12 @@ def Print():#add f'string
         elif "'" in res:
           split_string = res.split("\')", -1)
         else:
-          print(bold + red + "the 'print' statement is missing quotations!" + w)
-          exit()
+          for i in functions:
+            if i in res2:
+              pass
+            else:
+              print(bold + red + "the 'print' statement is missing quotations!" + w)
+              exit()
           
         res = split_string[0]
         if res[0] == "^": # This allows variables to be referenced inside quotations, like f' strings
@@ -270,12 +296,22 @@ def Print():#add f'string
                 dffdfdfdf = allvars[check]
                 res = res.replace(check, str(dffdfdfdf))
               else:
-                  #print(var)
-                  #print(res)
+                global PASS
+                PASS = False
+                if "time.time(" in check:
+                  timeTime()
+                else:
                   print(bold + red + f"'{varname}' variable does not exist!" + w)
                   exit()
-          res = res.replace("^", "")
-        print(res)
+        if PASS:
+          pass
+        else:
+          try:
+            res = res.replace("^", "")
+          except:
+            pass
+          print(res, end="")
+          print()
     else:
       print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
       exit()
@@ -489,19 +525,7 @@ for lines in file.readlines():
         print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
         exit()
     elif "time.time(":
-      if time_module == 1:
-        wrd = "time.time("
-        res = lines.partition(wrd)[2]
-        try:
-          res = res.replace(")", "")
-
-          pass
-        except:
-          print(bold + red + "an error occurred while trying to time.time!" + w)
-          exit()
-      else:
-        print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
-        exit()
+      timeTime()
 
     else:
       pass

@@ -15,3 +15,7 @@ var er = "e"
 print(^"{er}")
 
 prompt("e ")
+
+time.time()
+
+print(time.time())
