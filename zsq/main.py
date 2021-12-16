@@ -195,17 +195,18 @@ def check():
     df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
     df = str(df)
 
+"""
 def wait_until(somepredicate, timeout, period=0.25, *args, **kwargs):
     mustend = time.time() + timeout
     while time.time() < mustend:
       if somepredicate(*args, **kwargs): return True
       time.sleep(period)
     return False
-
+"""
 
 allvars = {}
 line = 0
-read_line=0
+read_line = 0
 PASS = False
 getChar1 = "none"
 getChar2 = "none"
@@ -214,7 +215,7 @@ var1 = "Undefined variable"
 input1 = "Undefined input"
 input2 = "Undefined input"
 input3 = "Undefined input"
-functions = ["print(", "prompt(", "time.time("]
+functions = ["print(", "prompt(", "time.time(", "time.rest("]
 
 def timeTime():
   if time_module == 1:
@@ -226,6 +227,8 @@ def timeTime():
           if res != "":
             print(bold + red + "no arguments must be made inside of the function time.time!" + w)
             exit()
+          else:
+            return time.time()
         except:
           print(bold + red + "an error occurred while trying to time.time!" + w)
           exit()
@@ -526,6 +529,7 @@ for lines in file.readlines():
         exit()
     elif "time.time(":
       timeTime()
+      pass
 
     else:
       pass
