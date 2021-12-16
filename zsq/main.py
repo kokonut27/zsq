@@ -527,10 +527,14 @@ for lines in file.readlines():
       else:
         print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
         exit()
-    elif "time.time(":
+    elif "time.time(" in lines:
       timeTime()
       pass
 
     else:
-      pass
+      if lines in string.whitespace:
+        pass
+      else:
+        print(bold + red + f"{lines} is not defined!" + w)
+        exit()
 
