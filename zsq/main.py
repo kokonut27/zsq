@@ -5,6 +5,7 @@ import getpass
 import re
 import string
 import click
+from database import *
 
 def zsq_version():
   return "z^2 v0.1.0"
