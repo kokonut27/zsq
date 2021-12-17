@@ -441,13 +441,33 @@ for lines in file.readlines():
                 break
           idk = "".join(idk)
           newvar = newvar.replace(idk, "")
+
+          # print(newvar)
+          # print(varname)
+          # print(newvar)
             
           if "'" in newvar or "\"" in newvar:
             if newvar in functions:
               if "print(" in newvar:
                 Print()
               elif "prompt(" in newvar:
-                pass
+                wrd = "prompt("
+                var = lines.partition(wrd)[2]
+                split_string = var.split(")", -1)
+                var = var.replace(')','')
+                var = var.replace('\"',"")
+                var = var.replace('\'',"")
+                var = var.replace("\\n", "\n")
+                var = var.replace("\\t", "\t")
+                var = var.replace("\\)", ")")
+                var = var.replace("\\(", "(")
+                var = var.replace('\\"', '"')
+                var = var.replace("\\'", "'")
+                # var = var = split_string[0]
+                # var = var.strip(")")
+                
+                value = input(var)
+                allvars[varname] = value
 
             else:
               newvar = str(newvar) # makes sure its a string

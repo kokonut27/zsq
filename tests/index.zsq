@@ -18,6 +18,10 @@ prompt("e ")
 
 time.time()
 
+var val = prompt("input: ")
+
+print(^"{val}")
+
 e // e
 
 print(time.time())
