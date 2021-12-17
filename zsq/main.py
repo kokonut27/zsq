@@ -143,7 +143,7 @@ end = '\033[0m'
 pink = '\033[95m'
 
 
-#all errors
+# file errors
 class nonexistantfilepath(Exception):
   pass
 class nonzsqfile(Exception):
@@ -162,7 +162,7 @@ else:
 
 
 os.system("clear")
-print("Z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
+print("z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
 
 
 content = f.read()
@@ -329,8 +329,6 @@ time_module = 0
 file = open(fp)
 readline2 = 0
 for lines in file.readlines():
-    #print(lines)
-
     if readline2 == 1:
       readline2 = 0
       continue
@@ -340,6 +338,7 @@ for lines in file.readlines():
     line+=1
     lines = lines.replace('\n','')
     lines = lines.replace('\t','')
+    code = lines
 
     #print(lines)
     # print(lines)
@@ -399,7 +398,7 @@ for lines in file.readlines():
                 if newvar in ["true", "false"]:
                   newvar_type = bool
                 else:
-                  print(bold + red + "variables must be named!" + w)
+                  print(bold + red + f"line {str(line)}: {code}\nvariables must be named!" + w)
                   exit()
           else:
             newvar_type = str
@@ -411,7 +410,7 @@ for lines in file.readlines():
           if find_space1 != -1:
             newvar2 = newvar[find_space:]
           else:
-            print(bold + red + "there was an error with encountering the variable! try again!" + w)
+            print(bold + red + f"line {str(line)}: {code}\nthere was an error with encountering the variable! try again!" + w)
             exit()
         
         newvar2 = newvar2.replace(" ", "")
@@ -475,7 +474,7 @@ for lines in file.readlines():
                 newvar = newvar.replace(newvar[-1], "")
                 #newvar = newvar.replace(newvar[0], "")
               else:
-                print(bold + red + "starting quotations and end quotations must be the same!" + w)
+                print(bold + red + f"line {str(line)}: {code}\nstarting quotations and end quotations must be the same!" + w)
                 exit()
               allvars[varname] = newvar
               # print(allvars)
@@ -484,10 +483,10 @@ for lines in file.readlines():
           elif newvar == "false":
             allvars[varname] = False
           else:
-            print(bold + red + "variables must be named after there is a equal sign!" + w)
+            print(bold + red + f"line {str(line)}: {code}\nvariables must be named after there is a equal sign!" + w)
             exit()
         else:
-          print(bold + red + "variables cannot include spaces!" + w)
+          print(bold + red + f"line {str(line)}: {code}\nvariables cannot include spaces!" + w)
           exit()
         # print(newvar)
       
@@ -539,13 +538,13 @@ for lines in file.readlines():
             if i in ["1","2","3","4","5","6","7","8","9","0"]:
               time.sleep(int(res))
             else:
-              print(bold + red + "strings cannot be inside integer values!" + w)
+              print(bold + red + f"line {str(line)}: {code}\nstrings cannot be inside integer values!" + w)
               exit()
         except:
-          print(bold + red + "an error occurred while trying to time.rest!" + w)
+          print(bold + red + f"line {str(line)}: {code}\nan error occurred while trying to time.rest!" + w)
           exit()
       else:
-        print(bold + red + "the 'time' module isn't imported or it doesn't exist!" + w)
+        print(bold + red + f"line {str(line)}: {code}\nthe 'time' module isn't imported or it doesn't exist!" + w)
         exit()
     elif "time.time(" in lines:
       timeTime()
@@ -553,8 +552,9 @@ for lines in file.readlines():
 
     else:
       if lines in string.whitespace:
+        # print("yo mama")
         pass
       else:
-        print(bold + red + f"{lines} is not defined!" + w)
+        print(bold + red + f"line {str(line)}: {code}\n{lines} is not defined!" + w)
         exit()
 
