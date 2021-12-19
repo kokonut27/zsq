@@ -471,8 +471,12 @@ for lines in file.readlines():
                 newvar = newvar.replace(newvar[-1], "")
                 #newvar = newvar.replace(newvar[0], "")
               else:
-                print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nstarting quotations and end quotations must be the same!" + w)
-                exit()
+                # print(newvar)
+                if newvar in functions:
+                  pass
+                else:
+                  print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nstarting quotations and end quotations must be the same!" + w)
+                  exit()
               allvars[varname] = newvar
               # print(allvars)
           elif newvar == "true":
