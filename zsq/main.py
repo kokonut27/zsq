@@ -252,7 +252,7 @@ def Print():#add f'string
           if i in res:
             pass
         else:
-          errro("the 'print' starting quotations and ending quotations are different!")
+          error("the 'print' starting quotations and ending quotations are different!")
           exit()
       else:
         res = res.replace("\")","")
