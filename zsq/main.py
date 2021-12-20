@@ -50,35 +50,8 @@ else:
   raise nonzsqfile("the file isn't a '.zsq' file!")
 
 
-# os.system("clear")
-# print("z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
-
-
 content = f.read()
 colist = content.split("\n")
-load = 0
-# for i in colist:
-#     if i:
-#         load += 1
-
-# console()
-
-# num = 0
-# os.system("clear")
-# print("Compiling script")
-# time.sleep(1)
-# os.system("clear")
-# while num < load:
-#     print("Compiling... /")
-#     time.sleep(0.08)
-#     os.system("clear")
-#     print("Compiling... -")
-#     time.sleep(0.08)
-#     os.system("clear")
-#     print("Compiling... \ ")
-#     time.sleep(0.08)
-#     os.system("clear")
-#     num += 1
 os.system("clear")
 
 
