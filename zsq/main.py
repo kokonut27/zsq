@@ -118,7 +118,7 @@ def timeTime():
         try:
           res = res.replace(")", "")
 
-          if res != "":
+          if res != "" or res != " ":
             error("no arguments must be made inside of the function time.time!")
             exit()
           else:
@@ -181,7 +181,7 @@ def Print():#add f'string
         # colors: res = res.replace("{red}", red)
         res = res.replace('"', "")
         res = res.replace("'", "")
-        res = res.replace(")","")
+        # res = res.replace(")","")
         
         if sq_str:
           if "{" in res:
@@ -201,6 +201,8 @@ def Print():#add f'string
                 global PASS
                 PASS = False
                 if "time.time(" in check:
+                  # print(check)
+                  # print(res)
                   timeTime()
                 else:
                   error(f"'{varname}' variable does not exist!")
