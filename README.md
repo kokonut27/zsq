@@ -17,13 +17,6 @@ $ python main.py
 ```
 Enter the filepath, and now you're done!
 
-### z^2 console
-To get started with more features of z^2, enter the following command in the z^2 console:
-
-```
->>> zsq --help
-```
-
 ### Special Ascii chars
 * `\)`: `)`
 * `\(`: `(`
