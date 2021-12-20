@@ -269,6 +269,7 @@ for lines in file.readlines():
       time_module = 1
     elif "import(\"os\")" in lines or "import('os')" in lines:
       os_module = 1
+
     elif "var " in lines:
       wrd = "var "
       newvar = lines.partition(wrd)[2]
