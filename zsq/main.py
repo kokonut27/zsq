@@ -219,7 +219,7 @@ input3 = "Undefined input"
 functions = ["print(", "prompt(", "time.time(", "time.rest("]
 
 def error(the_error):
-  print(bold + red + f"line {str(line)}: {code}\n{the_error}" + w)
+  print(red + bold + f"line {str(line)}: {code}\n{the_error}" + w)
 
 def timeTime():
   if time_module == 1:
