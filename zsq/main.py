@@ -162,35 +162,37 @@ else:
   raise nonzsqfile("the file isn't a '.zsq' file!")
 
 
-os.system("clear")
-print("z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
+# os.system("clear")
+# print("z^2 0.1.0 (default, Dec 13 2021, "+time.strftime("%H:%M:%S")+")")
 
 
 content = f.read()
 colist = content.split("\n")
 load = 0
-for i in colist:
-    if i:
-        load += 1
+# for i in colist:
+#     if i:
+#         load += 1
 
-console()
+# console()
 
-num = 0
+# num = 0
+# os.system("clear")
+# print("Compiling script")
+# time.sleep(1)
+# os.system("clear")
+# while num < load:
+#     print("Compiling... /")
+#     time.sleep(0.08)
+#     os.system("clear")
+#     print("Compiling... -")
+#     time.sleep(0.08)
+#     os.system("clear")
+#     print("Compiling... \ ")
+#     time.sleep(0.08)
+#     os.system("clear")
+#     num += 1
 os.system("clear")
-print("Compiling script")
-time.sleep(1)
-os.system("clear")
-while num < load:
-    print("Compiling... /")
-    time.sleep(0.08)
-    os.system("clear")
-    print("Compiling... -")
-    time.sleep(0.08)
-    os.system("clear")
-    print("Compiling... \ ")
-    time.sleep(0.08)
-    os.system("clear")
-    num += 1
+
 
 def check():
     df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
@@ -272,6 +274,10 @@ def Print():#add f'string
               exit()
           
         res = split_string[0]
+        
+        # print(res)
+        # print(res[0])
+        
         if res[0] == "^": # This allows variables to be referenced inside quotations, like f' strings
           sq_str = True
         else:
@@ -298,6 +304,7 @@ def Print():#add f'string
               # print(check)
               # print(allvars)
               if check in allvars:
+                # print(check)
                 res = res.replace("{", "")
                 res = res.replace("}", "")
                 dffdfdfdf = allvars[check]
@@ -308,7 +315,7 @@ def Print():#add f'string
                 if "time.time(" in check:
                   timeTime()
                 else:
-                  print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\n'{varname}' variable does not exist!" + w)
+                  error(f"'{varname}' variable does not exist!")
                   exit()
         if PASS:
           pass
@@ -339,7 +346,6 @@ for lines in file.readlines():
     if "//" in lines:
       readline2=1
     
-    line+=1
     lines = lines.replace('\n','')
     lines = lines.replace('\t','')
     code = lines
@@ -383,7 +389,7 @@ for lines in file.readlines():
       #newvar = variable;
       # print(newvar)
       
-      while " " in newvar:
+      if " " in newvar:
         find_space = newvar.find("\"")
         if find_space == -1:
           find_space1 = newvar.find("\'")
@@ -416,8 +422,12 @@ for lines in file.readlines():
         if e != -1:
           varname = newvar[:e]
           varname = varname.replace(" ", "")
+          VALUE = newvar[e:]
         # print(varname)
+        # print(abc)
         # print(newvar2)
+
+        # print(newvar[-1])
 
         if "=" in newvar:
           idk = []
@@ -441,12 +451,15 @@ for lines in file.readlines():
           # print(newvar)
           # print(varname)
           # print(newvar)
-            
-          if "'" in newvar or "\"" in newvar:
-            if newvar in functions:
+
+          for f in functions:
+            if f in newvar:
+              FUNC = True
               if "print(" in newvar:
                 Print()
               elif "prompt(" in newvar:
+                global value
+                # print("im idiot")
                 wrd = "prompt("
                 var = lines.partition(wrd)[2]
                 split_string = var.split(")", -1)
@@ -463,18 +476,27 @@ for lines in file.readlines():
                 # var = var.strip(")")
                 
                 value = input(var)
+                # print(value)
                 allvars[varname] = value
+                # print(value)
+                
 
-            else:
-              newvar = str(newvar) # makes sure its a string
+                # print(value)
+                # print(allvars)
+                # print(allvars[varname])
+                
+                FUNC = True
+
+          
+          if "'" in newvar or "\"" in newvar:
               if newvar[-1] == "'" and newvar[0] == "'" or newvar[-1] == "\"" and newvar[0] == "\"":
                 newvar = newvar.replace(newvar[-1], "")
                 #newvar = newvar.replace(newvar[0], "")
               else:
-                # print(newvar)
-                if newvar in functions:
-                  pass
-                else:
+                try:
+                  if FUNC == True:
+                    pass
+                except:
                   error("starting quotations and end quotations must be the same!")
                   exit()
               allvars[varname] = newvar
@@ -487,8 +509,12 @@ for lines in file.readlines():
             error("variables must be named after there is a equal sign!")
             exit()
         else:
-          error("variables cannot include spaces!")
-          exit()
+          try:
+            if FUNC:
+              pass
+          except:
+            error("variables cannot include spaces!")
+            exit()
         # print(newvar)
       
     elif "prompt(" in lines:
@@ -526,7 +552,7 @@ for lines in file.readlines():
     elif "print(" in lines:
       Print()
     
-    elif "if " in lines:
+    elif "whatif " in lines:
       pass
 
     elif "time.rest(" in lines:
@@ -548,14 +574,13 @@ for lines in file.readlines():
         error("the 'time' module isn't imported or it doesn't exist!")
         exit()
     elif "time.time(" in lines:
-      timeTime()
       pass
 
     else:
       if lines in string.whitespace:
-        # print("yo mama")
         pass
       else:
         error(f"{lines} is not defined!")
         exit()
 
+    line+=1
