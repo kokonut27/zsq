@@ -219,7 +219,7 @@ input3 = "Undefined input"
 functions = ["print(", "prompt(", "time.time(", "time.rest("]
 
 def error(the_error):
-  print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^\n{the_error}" + w)
+  print(bold + red + f"line {str(line)}: {code}\n{the_error}" + w)
 
 def timeTime():
   if time_module == 1:
@@ -229,15 +229,15 @@ def timeTime():
           res = res.replace(")", "")
 
           if res != "":
-            print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nno arguments must be made inside of the function time.time!" + w)
+            error("no arguments must be made inside of the function time.time!")
             exit()
           else:
             return time.time()
         except:
-          print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nan error occurred while trying to time.time!" + w)
+          error("an error occurred while trying to time.time!")
           exit()
   else:
-        print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthe 'time' module isn't imported or it doesn't exist!" + w)
+        error("the 'time' module isn't imported or it doesn't exist!")
         exit()
 
 def Print():#add f'string
@@ -252,7 +252,7 @@ def Print():#add f'string
           if i in res:
             pass
         else:
-          print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthe 'print' starting quotations and ending quotations are different!" + w)
+          errro("the 'print' starting quotations and ending quotations are different!")
           exit()
       else:
         res = res.replace("\")","")
@@ -268,7 +268,7 @@ def Print():#add f'string
             if i in res2:
               pass
             else:
-              print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthe 'print' function is missing quotations!" + w)
+              error("the 'print' function is missing quotations!")
               exit()
           
         res = split_string[0]
@@ -320,7 +320,7 @@ def Print():#add f'string
           print(res, end="")
           print()
     else:
-      print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthe 'print' statement must have a closing \")\"!" + w)
+      error("the 'print' statement must have a closing \")\"!")
       exit()
   #except:
     #print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
@@ -395,7 +395,7 @@ for lines in file.readlines():
                 if newvar in ["true", "false"]:
                   newvar_type = bool
                 else:
-                  print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nvariables must be named!" + w)
+                  error("variables must be named!")
                   exit()
           else:
             newvar_type = str
@@ -407,7 +407,7 @@ for lines in file.readlines():
           if find_space1 != -1:
             newvar2 = newvar[find_space:]
           else:
-            print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthere was an error with encountering the variable! try again!" + w)
+            error("there was an error with encountering the variable! try again!")
             exit()
         
         newvar2 = newvar2.replace(" ", "")
@@ -475,7 +475,7 @@ for lines in file.readlines():
                 if newvar in functions:
                   pass
                 else:
-                  print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nstarting quotations and end quotations must be the same!" + w)
+                  error("starting quotations and end quotations must be the same!")
                   exit()
               allvars[varname] = newvar
               # print(allvars)
@@ -484,10 +484,10 @@ for lines in file.readlines():
           elif newvar == "false":
             allvars[varname] = False
           else:
-            print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nvariables must be named after there is a equal sign!" + w)
+            error("variables must be named after there is a equal sign!")
             exit()
         else:
-          print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nvariables cannot include spaces!" + w)
+          error("variables cannot include spaces!")
           exit()
         # print(newvar)
       
@@ -539,13 +539,13 @@ for lines in file.readlines():
             if i in ["1","2","3","4","5","6","7","8","9","0"]:
               time.sleep(int(res))
             else:
-              print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nstrings cannot be inside integer values!" + w)
+              error("strings cannot be inside integer values!")
               exit()
         except:
-          print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nan error occurred while trying to time.rest!" + w)
+          error("an error occurred while trying to time.rest!")
           exit()
       else:
-        print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\nthe 'time' module isn't imported or it doesn't exist!" + w)
+        error("the 'time' module isn't imported or it doesn't exist!")
         exit()
     elif "time.time(" in lines:
       timeTime()
@@ -556,6 +556,6 @@ for lines in file.readlines():
         # print("yo mama")
         pass
       else:
-        print(bold + red + f"line {str(line)}: {code}\n\t\t  ^^^^\n{lines} is not defined!" + w)
+        error(f"{lines} is not defined!")
         exit()
 
