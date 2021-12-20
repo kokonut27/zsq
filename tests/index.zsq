@@ -22,4 +22,4 @@ var val = prompt("input: ")
 
 print(^"{val}")
 
-print(time.time())
+print(^"{time.time()}")
