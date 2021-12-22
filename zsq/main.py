@@ -91,9 +91,14 @@ def timeTime():
         try:
           res = res.replace(")", "")
 
+          # print(res)
+
           if res != "" or res != " ":
-            error("no arguments must be made inside of the function time.time!")
-            exit()
+            if "}" in res:
+              return time.time()
+            else:
+              error("no arguments must be made inside of the function time.time!")
+              exit()
           else:
             return time.time()
         except:
@@ -177,6 +182,10 @@ def Print():#add f'string
                   # print(check)
                   # print(res)
                   timeTime()
+                  res = res.replace("{", "")
+                  res = res.replace("}", "")
+                  print(time.time())
+                  PASS = True
                 else:
                   error(f"'{varname}' variable does not exist!")
                   exit()
