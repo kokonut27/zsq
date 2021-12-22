@@ -154,6 +154,9 @@ class zsqDB:
 
 
 
+#-------------Compiler----------------#
+
+      
 # file errors
 class nonexistantfilepath(Exception):
   pass
