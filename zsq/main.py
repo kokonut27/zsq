@@ -574,7 +574,8 @@ for lines in file.readlines():
       pass
 
     else:
-      if lines in string.whitespace:
+      # print(lines)
+      if lines == "" or lines == " " or lines == "  " or lines == "\n":
         pass
       else:
         error(f"{lines} is not defined!")
