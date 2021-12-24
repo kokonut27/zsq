@@ -1,4 +1,4 @@
-> **\*\*Currently in version 0.1.0.**
+> **\*\*Version 0.1.0.**
 
 # z^2
 > a complex language with high level programming and moderate syntax. 
