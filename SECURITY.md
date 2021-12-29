@@ -6,7 +6,7 @@ Current versions that are being supported are only version 0.1.0 as of right now
 
 | Version | Supported          |
 | ------- | ------------------ |
-|  0.1.0x | :white_check_mark: |
+|  0.1.x  | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
