@@ -6,16 +6,29 @@
 ## Get started
 ### Usage
 1. Clone this repository: 
-```
+```zsh
 $ git clone https://github.com/JBYT27/zsq.git
 ```
+2. Adding an alias
+Adding an alias is different on different Operating Systems. Check yours below!
 
-2. Run z^2
+#### macOS/Linux
+Find your `.zshrc` or `.bashrc` files and add the following code:
+```zsh
+alias zsq="python $HOME/zsq/main.py"
+```
+
+#### Windows
+
+
+---
+
+
+3. Run z^2
 
 Create a file named `index.zsq`, which will contain all of your code. Then enter the following in the shell:
-```
-$ cd zsq
-$ python main.py
+```zsh
+$ zsq index.zsq
 ```
 Enter the filepath, and now you're done!
 
