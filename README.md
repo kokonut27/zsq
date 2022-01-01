@@ -1,7 +1,7 @@
 > **\*\*Version 0.1.0.**
 
 # z^2
-> a complex language with high level programming and moderate syntax. 
+> a complex language with high level programming and moderate syntax.
 
 ## Get started
 ### Usage
@@ -11,7 +11,7 @@ $ git clone https://github.com/JBYT27/zsq.git
 ```
 2. Add an alias
 
-Adding an alias is different on different Operating Systems. Check yours below!
+Adding an alias is different on each Operating System. Check yours below!
 
 #### macOS/Linux
 Create a `.zshrc` or `.bashrc` files and add the following code:
@@ -32,6 +32,7 @@ Create a file named `index.zsq`, which will contain all of your code. Then enter
 ```zsh
 $ zsq index.zsq
 ```
+Then you're all done!
 
 ### Example program
 > This is a current work in progress as of right now
