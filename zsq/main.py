@@ -174,7 +174,6 @@ def filepath(fp):
   else:
     raise nonzsqfile("the file isn't a '.zsq' file!")
 
-
   content = f.read()
   colist = content.split("\n")
   os.system("clear")
@@ -582,3 +581,7 @@ def filepath(fp):
           exit()
   
       line+=1
+
+
+if __name__ == "__main__":
+  filepath()
