@@ -9,7 +9,8 @@
 ```zsh
 $ git clone https://github.com/JBYT27/zsq.git
 ```
-2. Adding an alias
+2. Add an alias
+
 Adding an alias is different on different Operating Systems. Check yours below!
 
 #### macOS/Linux
