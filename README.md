@@ -24,9 +24,7 @@ Create a `.bashrc` files and add the following code:
 ```zsh
 alias zsq="python $HOME/zsq/main.py"
 ```
-
----
-
+--- 
 
 3. Run z^2
 
@@ -34,9 +32,8 @@ Create a file named `index.zsq`, which will contain all of your code. Then enter
 ```zsh
 $ zsq index.zsq
 ```
-Enter the filepath, and now you're done!
 
-### Simple example
+### Example program
 > This is a current work in progress as of right now
 
 ```
@@ -58,8 +55,6 @@ function Fibonacci(num) { // Creates an arg named num
 
 print(Fibonacci(7))
 ```
-
-> **\*\*Note that `whatif` statements cannot be compound, if they can have more than one output, such as `if num == 1 or num == 2...`, it must be split in z^2** 
 
 ### Contributing
 Feel free to contribute by [forking](https://github.com/JBYT27/zsq/network/members) the repo, and leaving a pull request!
