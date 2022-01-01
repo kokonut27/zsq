@@ -14,13 +14,16 @@ $ git clone https://github.com/JBYT27/zsq.git
 Adding an alias is different on different Operating Systems. Check yours below!
 
 #### macOS/Linux
-Find your `.zshrc` or `.bashrc` files and add the following code:
+Create a `.zshrc` or `.bashrc` files and add the following code:
 ```zsh
 alias zsq="python $HOME/zsq/main.py"
 ```
 
 #### Windows
-
+Create a `.bashrc` files and add the following code:
+```zsh
+alias zsq="python $HOME/zsq/main.py"
+```
 
 ---
 
