@@ -36,12 +36,6 @@ $ zsq index.zsq
 ```
 Enter the filepath, and now you're done!
 
-### Special Ascii chars
-* `\n`: `newline`
-* `\t`: `tab`
-* `\"`: `"`
-* `\'`: `'`
-
 ### Simple example
 > This is a current work in progress as of right now
 
