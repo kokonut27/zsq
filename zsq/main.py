@@ -52,6 +52,8 @@ class nonzsqfile(Exception):
 @click.command()
 @click.argument("fp", default="index.zsq")
 def filepath(fp):
+  global PASS
+  
   if '.zsq' in fp:
     try:
       f = open(f'{fp}')
