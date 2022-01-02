@@ -12,8 +12,6 @@ $ git clone https://github.com/JBYT27/zsq.git
 
 2. Add an alias
 
-Adding an alias is different on each Operating System. Check yours below!
-
 #### macOS/Linux
 Create a `.zshrc` or `.bashrc` files and add the following code:
 ```zsh
