@@ -26,6 +26,7 @@ Create a `.bashrc` files and add the following code:
 alias zsq="python $HOME/zsq/main.py"
 ```
 
+#### Alternative console
 An alternative to this is copying the following code, and pasting it into the console:
 ```
 $ alias zsq="python $HOME/zsq/main.py"
