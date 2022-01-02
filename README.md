@@ -6,9 +6,10 @@
 ## Get started
 ### Usage
 1. Clone this repository: 
-```zsh
+```
 $ git clone https://github.com/JBYT27/zsq.git
 ```
+
 2. Add an alias
 
 Adding an alias is different on each Operating System. Check yours below!
@@ -24,6 +25,12 @@ Create a `.bashrc` files and add the following code:
 ```zsh
 alias zsq="python $HOME/zsq/main.py"
 ```
+
+An alternative to this is copying the following code, and pasting it into the console:
+```
+$ alias zsq="python $HOME/zsq/main.py"
+```
+
 --- 
 
 3. Run z^2
