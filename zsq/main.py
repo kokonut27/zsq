@@ -186,7 +186,13 @@ def filepath(fp):
                   res = res.replace("{", "")
                   res = res.replace("}", "")
                   dffdfdfdf = allvars[check]
+
+                  # print(allvars[check])
+                  # print(check)
+
+                  # print(res)
                   res = res.replace(check, str(dffdfdfdf))
+                  # print(res)
                 else:
                   global PASS
                   PASS = False
