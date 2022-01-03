@@ -25,6 +25,8 @@ alias zsq="python $HOME/zsq/main.py"
 ```
 
 #### Alternative console
+> I suggest this alternative for those who use Replit as their code editor
+
 An alternative to this is copying the following code, and pasting it into the console:
 ```
 $ alias zsq="python $HOME/zsq/main.py"
