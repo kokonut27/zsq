@@ -6,7 +6,7 @@
 ## Get started
 ### Usage
 1. Clone this repository: 
-```
+```zsh
 $ git clone https://github.com/JBYT27/zsq.git
 ```
 
@@ -28,7 +28,7 @@ alias zsq="python $HOME/zsq/main.py"
 > I suggest this alternative for those who use Replit as their code editor
 
 An alternative to this is copying the following code, and pasting it into the console:
-```
+```zsh
 $ alias zsq="python $HOME/zsq/main.py"
 ```
 
