@@ -276,8 +276,6 @@ def filepath(fp):
         newvar.replace(")","")
         newvar.replace('\"', '')
         newvar = split_string[0]
-        #newvar = variable ;
-        # print(newvar)
         
         if " " in newvar:
           find_space = newvar.find("\"")
@@ -307,17 +305,13 @@ def filepath(fp):
               exit()
           
           newvar2 = newvar2.replace(" ", "")
-          # print(newvar)
+          
           e = newvar.find("=")
           if e != -1:
             varname = newvar[:e]
             varname = varname.replace(" ", "")
             VALUE = newvar[e:]
-          # print(varname)
-          # print(abc)
-          # print(newvar2)
-  
-          # print(newvar[-1])
+            
   
           if "=" in newvar:
             idk = []
@@ -337,10 +331,7 @@ def filepath(fp):
                   break
             idk = "".join(idk)
             newvar = newvar.replace(idk, "")
-  
-            # print(newvar)
-            # print(varname)
-            # print(newvar)
+            FUNC = False
   
             for f in functions:
               if f in newvar:
@@ -349,7 +340,7 @@ def filepath(fp):
                   Print()
                 elif "prompt(" in newvar:
                   global value
-                  # print("im idiot")
+                  
                   wrd = "prompt("
                   var = lines.partition(wrd)[2]
                   split_string = var.split(")", -1)
@@ -366,31 +357,36 @@ def filepath(fp):
                   # var = var.strip(")")
                   
                   value = input(var)
-                  # print(value)
                   allvars[varname] = value
-                  # print(value)
-                  
-  
-                  # print(value)
-                  # print(allvars)
-                  # print(allvars[varname])
                   
                   FUNC = True
   
             
             if "'" in newvar or "\"" in newvar:
-                if newvar[-1] == "'" and newvar[0] == "'" or newvar[-1] == "\"" and newvar[0] == "\"":
-                  newvar = newvar.replace(newvar[-1], "")
-                  #newvar = newvar.replace(newvar[0], "")
-                else:
-                  try:
+                already = False
+                if FUNC != True:
+                  if newvar[-1] == "'" and newvar[0] == "'" or newvar[-1] == "\"" and newvar[0] == "\"":
+                    newvar = newvar.replace(newvar[-1], "")
+                    allvars[varname] = newvar
+                    already = True
+                  else:
                     if FUNC == True:
                       pass
-                  except:
-                    error("starting quotations and end quotations must be the same!")
-                    exit()
-                allvars[varname] = newvar
-                # print(allvars)
+                    else:
+                      error("starting quotations and end quotations must be the same!")
+                      exit()
+                if already:
+                  pass
+                else:
+                  if newvar[-1] == "'" and newvar[0] == "'" or newvar[-1] == "\"" and newvar[0] == "\"":
+                    newvar = newvar.replace(newvar[-1], "")
+                    #newvar = newvar.replace(newvar[0], "")
+                  else:
+                    if FUNC == True:
+                      pass
+                    else:
+                      error("starting quotations and end quotations must be the same!")
+                      exit()
             elif newvar == "true":
               allvars[varname] = True
             elif newvar == "false":
@@ -405,7 +401,6 @@ def filepath(fp):
             except:
               error("variables cannot include spaces!")
               exit()
-          # print(newvar)
         
       elif "prompt(" in lines:
         wrd = "prompt("
@@ -424,19 +419,6 @@ def filepath(fp):
         # var = var.strip(")")
         
         input(var)
-  
-        """
-        if var in allvars:
-          # var = input()
-          # input()
-          # allvars[varname] = var
-        else:
-          if var not in allvars:
-            print(bold + red + f"'{var}' variable does not exist!" + w)
-            exit()
-          else:
-            pass
-        """
   
   
       elif "print(" in lines:
