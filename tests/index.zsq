@@ -10,7 +10,7 @@ print("nou ) ) )\n ee \n eeegdfgsdfg")
 
 time.rest(1)
 
-var er = "e"
+var er = "hiiii :D"
 
 print(^"{er}")
 
@@ -25,3 +25,5 @@ var val = prompt("input: ")
 print(^"{val}")
 
 print(^"{time.time()}")
+
+afasdfasdfasd

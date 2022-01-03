@@ -229,6 +229,7 @@ def filepath(fp):
   file = open(fp)
   readline2 = 0
   for lines in file.readlines():
+      line+=1
       if readline2 == 1:
         readline2 = 0
         continue
@@ -455,8 +456,6 @@ def filepath(fp):
         else:
           error(f"{lines} is not defined!")
           exit()
-  
-      line+=1
 
 
 if __name__ == "__main__":
