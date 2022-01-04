@@ -140,7 +140,7 @@ def filepath(fp):
           error("the 'time' module isn't imported or it doesn't exist!")
           exit()
   
-  def Print():#add f'string
+  def Print():
     #try:
       if '")' in lines or "')" in lines or ")" in lines:
         wrd = "print("
@@ -297,8 +297,8 @@ def filepath(fp):
       elif "/#" in lines:
         wait_until("#/", 0)
         readline2 = 1"""
-      if "//" in lines:
-        pass
+      # if "//" in lines:
+      #   pass
       lines = lines.rstrip()
   
       # print(lines[:2])
