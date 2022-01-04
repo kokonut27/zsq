@@ -64,7 +64,7 @@ def filepath(fp):
 
   content = f.read()
   colist = content.split("\n")
-  os.system("clear")
+  os.system("clear") # <- this isn't needed why notttt lol
   
   
   def check():

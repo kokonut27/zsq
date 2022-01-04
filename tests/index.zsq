@@ -1,29 +1,3 @@
-import("time")
+var name = prompt("What is your name?\n: ")
 
-// eeee
-
-print("e")
-
-time.rest(2)
-
-print("nou ) ) )\n ee \n eeegdfgsdfg")
-
-time.rest(1)
-
-var er = "hiiii :D"
-
-print(^"{er}")
-
-prompt("e ")
-
-time.time()
-
-e // efdsafasdf
-
-var val = prompt("input: ")
-
-print(^"{val}")
-
-print(^"{time.time()}")
-
-print(^"{time.curtime("$YEAR")}")
+print(^"Hello {name}!")
