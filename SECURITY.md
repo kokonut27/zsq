@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Current versions that are being supported are only version 0.1.0 as of right now.
+Current versions that are being supported are only version 0.1.x as of right now.
 
 | Version | Supported          |
 | ------- | ------------------ |
