@@ -81,6 +81,7 @@ def filepath(fp):
   """
   
   allvars = {}
+  what_if = {}
   line = 0
   read_line = 0
   PASS = False
@@ -326,6 +327,8 @@ def filepath(fp):
         newvar.replace(")","")
         newvar.replace('\"', '')
         newvar = split_string[0]
+
+        # print(newvar)
         
         if " " in newvar:
           find_space = newvar.find("\"")
@@ -336,7 +339,7 @@ def filepath(fp):
                 if i in ["1","2","3","4","5","6","7","8","9","0"]:
                   newvar_type = int
                 else:
-                  if newvar in ["true", "false"]:
+                  if "true" in newvar or "false" in newvar:
                     newvar_type = bool
                   else:
                     error("variables must be named!")
@@ -351,8 +354,20 @@ def filepath(fp):
             if find_space1 != -1:
               newvar2 = newvar[find_space:]
             else:
-              error("there was an error with encountering the variable! try again!")
-              exit()
+              if newvar_type == int or newvar_type == bool or newvar_type == float:
+                a = newvar.find("=")
+                if a != -1:
+                  hm = newvar[a:]
+                  hm = hm.replace(" ", "")
+                  
+                  # print(newvar)
+                  # print(hm)
+                else:
+                  error("there was an error with encountering the variable! try again!")
+                  exit()
+              else:
+                error("there was an error with encountering the variable! try again!")
+                exit()
           
           newvar2 = newvar2.replace(" ", "")
           
@@ -362,7 +377,7 @@ def filepath(fp):
             varname = varname.replace(" ", "")
             VALUE = newvar[e:]
             
-  
+          # print(newvar)
           if "=" in newvar:
             idk = []
             Continue = True
@@ -482,17 +497,60 @@ def filepath(fp):
           a = res.find("!=")
           if a != -1: # a double check 
             vare = res[:a]
+          vare = vare.replace(" ", "")
           try:
             var = allvars[vare]
           except:
             error(f"'{vare}' variable does not exist!")
             exit()
-          vale = res[a:]
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
           e = vale.find("\"")
           if e == -1:
             e = vale.find("'")
             if e == -1:
-              pass # check if bool or diff value
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  # vale = True
+
+                  if var == True:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  # vale = True
+
+                  if var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if var == True or var == False:
+                  what_if[vare] = False
+                else:
+                  what_if[vare] = True
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
             else:
               pass
           else:
