@@ -123,14 +123,16 @@ def filepath(fp):
   
             # print(res)
   
-            if res != "" or res != " ":
+            if res == "" or res == " ":
+              error("time argument must be made inside of the function time.curtime!")
+              exit()
+            else:
               if "}" in res:
-                return time.strftime()
+                # print(res)
+                return None
               else:
                 error("no arguments must be made inside of the function time.curtime!")
                 exit()
-            else:
-              return time.time()
           except:
             error("an error occurred while trying to time.curtime!")
             exit()
@@ -214,6 +216,9 @@ def filepath(fp):
                 else:
                   global PASS
                   PASS = False
+
+                  # print(check)
+                  # print(res)
                   if "time.time(" in check:
                     # print(check)
                     # print(res)
@@ -221,6 +226,31 @@ def filepath(fp):
                     res = res.replace("{", "")
                     res = res.replace("}", "")
                     print(time.time())
+                    PASS = True
+                  elif "time.curtime(" in check:
+                    # print(PASS)
+                    # print(check)
+                    # print(res)
+                    timeCurtime()
+                    wrd = "time.curtime("
+                    # res = lines.partition(wrd)[2]
+          
+                    res = res.replace("{", "")
+                    res = res.replace("}", "")
+                    res = res.replace("$YEAR", "%Y")
+                    res = res.replace("$MONTH", "%m")
+                    res = res.replace("$DAY", "%d")
+                    res = res.replace("$HOUR", "$H")
+                    res = res.replace("$MIN", "%M")
+                    res = res.replace("$SEC", "%S")
+                    # res = res.replace("$MISEC", "%f")
+                    parent = res.find("(")
+                    if parent != -1:
+                      a = int(parent)-1
+                      if res[a] == "e":
+                        res = res[parent+1:]
+                    print(time.strftime(res))
+                    # print(res)
                     PASS = True
                   else:
                     error(f"'{varname}' variable does not exist!")

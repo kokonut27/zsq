@@ -26,3 +26,4 @@ print(^"{val}")
 
 print(^"{time.time()}")
 
+print(^"{time.curtime("$YEAR")}")
