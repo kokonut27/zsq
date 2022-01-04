@@ -84,14 +84,8 @@ def filepath(fp):
   line = 0
   read_line = 0
   PASS = False
-  getChar1 = "none"
-  getChar2 = "none"
-  getChar3 = "none"
   var1 = "Undefined variable"
-  input1 = "Undefined input"
-  input2 = "Undefined input"
-  input3 = "Undefined input"
-  functions = ["print(", "prompt(", "time.time(", "time.rest("]
+  functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime("]
   
   def error(the_error):
     print(red + bold + f"line {str(line)}: {code}\n{the_error}" + w)
@@ -115,6 +109,30 @@ def filepath(fp):
               return time.time()
           except:
             error("an error occurred while trying to time.time!")
+            exit()
+    else:
+          error("the 'time' module isn't imported or it doesn't exist!")
+          exit()
+
+  def timeCurtime():
+    if time_module == 1:
+          wrd = "time.curtime("
+          res = lines.partition(wrd)[2]
+          try:
+            res = res.replace(")", "")
+  
+            # print(res)
+  
+            if res != "" or res != " ":
+              if "}" in res:
+                return time.strftime()
+              else:
+                error("no arguments must be made inside of the function time.curtime!")
+                exit()
+            else:
+              return time.time()
+          except:
+            error("an error occurred while trying to time.curtime!")
             exit()
     else:
           error("the 'time' module isn't imported or it doesn't exist!")
@@ -233,8 +251,8 @@ def filepath(fp):
       if readline2 == 1:
         readline2 = 0
         continue
-      if "//" in lines:
-        readline2=1
+      # if "//" in lines:
+      #   readline2=1
       
       lines = lines.replace('\n','')
       lines = lines.replace('\t','')
@@ -265,6 +283,7 @@ def filepath(fp):
             lines = lines[:e]
         except:
           pass
+          
       elif "import(\"time\")" in lines or "import('time')" in lines:
         time_module = 1
       elif "import(\"os\")" in lines or "import('os')" in lines:
@@ -447,7 +466,17 @@ def filepath(fp):
           error("the 'time' module isn't imported or it doesn't exist!")
           exit()
       elif "time.time(" in lines:
-        pass
+        if time_module == 1:
+          pass
+        else:
+          error("the 'time' module isn't imported or it doesn't exist!")
+          exit()
+      elif "time.curtime(" in lines:
+        if time_module == 1:
+          pass
+        else:
+          error("the 'time' module isn't imported or it doesn't exist!")
+          exit()
   
       else:
         # print(lines)
