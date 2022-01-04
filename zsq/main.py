@@ -475,7 +475,28 @@ def filepath(fp):
         Print()
       
       elif "whatif " in lines:
-        pass
+        wrd = "whatif "
+        res = lines.partition(wrd)[2]
+        symbols = ["!=", "==", "isin"]
+        if symbols[0] in res:
+          a = res.find("!=")
+          if a != -1: # a double check 
+            vare = res[:a]
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a:]
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              pass # check if bool or diff value
+            else:
+              pass
+          else:
+            pass
   
       elif "time.rest(" in lines:
         if time_module == 1:
