@@ -4,4 +4,4 @@ print(^"Hello {name}!")
 
 var variable = true
 
-whatif variable != true 
+whatif variable != true {

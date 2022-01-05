@@ -493,6 +493,7 @@ def filepath(fp):
         wrd = "whatif "
         res = lines.partition(wrd)[2]
         symbols = ["!=", "==", "isin"]
+        
         if symbols[0] in res:
           a = res.find("!=")
           if a != -1: # a double check 
@@ -555,6 +556,16 @@ def filepath(fp):
               pass
           else:
             pass
+
+        elif symbols[1] in res:
+          pass
+
+        elif symbols[2] in res:
+          pass
+
+        else:
+          error("'whatif' statement must have an operator!")
+          exit()
   
       elif "time.rest(" in lines:
         if time_module == 1:
