@@ -537,25 +537,69 @@ def filepath(fp):
               elif "bool" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
-                if var == True or var == False:
-                  what_if[vare] = False
-                else:
-                  what_if[vare] = True
+
+                if vale == "bool":
+                  if var == True or var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
               elif "integer" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  if var == int:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
                 
               elif "float" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
 
+                if vale == "float":
+                  if var == float:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+
               else:
                 error(f"'{vale}' is undefined!")
                 exit()
+                
             else:
-              pass
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
           else:
-            pass
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace("'", "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
 
         elif symbols[1] in res:
           pass
