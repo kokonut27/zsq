@@ -21,14 +21,14 @@ Most distributions of Linux use Bash by default, so you will have a `.bashrc` fi
 
 Run the following command. If you use Bash replace `.zshrc` with `.bashrc`:
 ```zsh
-echo 'alias zsq="python $HOME/zsq/main.py"' >> .zshrc
+echo "alias zsq='python $HOME/zsq/main.py'" >> .zshrc
 ```
 
 #### Windows
 *You may want to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)*
 
 ```zsh
-echo 'alias zsq="python $HOME/zsq/main.py"' >> .bashrc
+echo "alias zsq='python $HOME/zsq/main.py'" >> .bashrc
 ```
 
 #### Alternative console
