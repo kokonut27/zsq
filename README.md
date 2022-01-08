@@ -13,15 +13,22 @@ $ git clone https://github.com/JBYT27/zsq.git
 2. Add an alias
 
 #### macOS/Linux
-Create a `.zshrc` or `.bashrc` files and add the following code:
+If you use macOS Catalina or newer, you will use Z-Shell so you will have a `.zshrc` file in your home folder.
+
+Most distributions of Linux use Bash by default, so you will have a `.bashrc` file in your home folder.
+
+*Of course, it is possible to change your shell so you should check before running the command.*
+
+Run the following command. If you use Bash replace `.zshrc` with `.bashrc`:
 ```zsh
-alias zsq="python $HOME/zsq/main.py"
+echo 'alias zsq="python $HOME/zsq/main.py"' >> .zshrc
 ```
 
 #### Windows
-Create a `.bashrc` files and add the following code:
+*You may want to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)*
+
 ```zsh
-alias zsq="python $HOME/zsq/main.py"
+echo 'alias zsq="python $HOME/zsq/main.py"' >> .bashrc
 ```
 
 #### Alternative console
@@ -31,6 +38,7 @@ An alternative to this is copying the following code, and pasting it into the co
 ```zsh
 $ alias zsq="python $HOME/zsq/main.py"
 ```
+However, whenever your repl is reloaded you will need to re-run the command.
 
 --- 
 
