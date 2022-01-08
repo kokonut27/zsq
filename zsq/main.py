@@ -308,12 +308,9 @@ def filepath(fp):
         pass
         read_line = 0
       elif "//" in lines:
-        try:
           e = lines.find("//")
           if e != -1:
             lines = lines[:e]
-        except:
-          pass
           
       elif "import(\"time\")" in lines or "import('time')" in lines:
         time_module = 1
@@ -600,6 +597,17 @@ def filepath(fp):
               what_if[vare] = False
             else:
               what_if[vare] = True
+
+          # print(vare)
+          # print(vale)
+
+          for x in file.readlines():
+            # print(x)
+            if "elseif " in x:
+              wrd = "elseif "
+              res = lines.partition(wrd)[2]
+
+              
 
         elif symbols[1] in res:
           pass
