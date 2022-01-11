@@ -5,6 +5,7 @@ import getpass
 import re
 import string
 import click
+from version import Version
 
 
 red = "\033[0;91m"
@@ -86,7 +87,7 @@ def filepath(fp):
   read_line = 0
   PASS = False
   var1 = "Undefined variable"
-  functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime("]
+  functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime(", "version("]
   
   def error(the_error):
     print(red + bold + f"line {str(line)}: {code}\n{the_error}" + w)
@@ -220,7 +221,21 @@ def filepath(fp):
 
                   # print(check)
                   # print(res)
-                  if "time.time(" in check:
+                  if "version(" in check:
+                    wrd = "version("
+                    res = lines.partition(wrd)[2]
+                    res = res.replace(")", "")
+                    if res != "" or res != " ":
+                      if "}" in res:
+                        pass
+                      else:
+                        error("'version()' function argument must be empty!")
+                        exit()
+                    print("z^2 version " + Version)
+
+                    PASS = True
+                    
+                  elif "time.time(" in check:
                     # print(check)
                     # print(res)
                     timeTime()
@@ -601,7 +616,10 @@ def filepath(fp):
           # print(vare)
           # print(vale)
 
+          
+
           for x in file.readlines():
+            # print("hii <3")
             # print(x)
             if "elseif " in x:
               wrd = "elseif "
@@ -618,6 +636,16 @@ def filepath(fp):
         else:
           error("'whatif' statement must have an operator!")
           exit()
+
+      elif "version(" in lines:
+        wrd = "version("
+        res = lines.partition(wrd)[2]
+        res = res.replace(")", "")
+        if res != "" or res != " ":
+          error("'version()' function argument must be empty!")
+          exit()
+        else:
+          pass
   
       elif "time.rest(" in lines:
         if time_module == 1:
