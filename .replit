@@ -1,2 +1,2 @@
-run = "python zsq/main.py tests/index.zsq"
+run = "python -B zsq tests/index.zsq"
 language = "nix"
