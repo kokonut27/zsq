@@ -21,14 +21,14 @@ Most distributions of Linux use Bash by default, so you will have a `.bashrc` fi
 
 Run the following command. If you use Bash replace `.zshrc` with `.bashrc`:
 ```zsh
-echo "alias zsq='python $HOME/zsq/main.py'" >> .zshrc
+echo "alias zsq='python -B zsq'" >> .zshrc
 ```
 
 #### Windows
 *You may want to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)*
 
 ```zsh
-echo "alias zsq='python $HOME/zsq/main.py'" >> .bashrc
+echo "alias zsq='python -B zsq'" >> .bashrc
 ```
 
 #### Alternative console
@@ -36,7 +36,7 @@ echo "alias zsq='python $HOME/zsq/main.py'" >> .bashrc
 
 An alternative to this is copying the following code, and pasting it into the console:
 ```zsh
-$ alias zsq="python $HOME/zsq/main.py"
+$ alias zsq="python -B zsq"
 ```
 However, whenever your repl is reloaded you will need to re-run the command.
 
