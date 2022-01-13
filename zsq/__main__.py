@@ -65,21 +65,27 @@ def filepath(fp):
 
   content = f.read()
   colist = content.split("\n")
-  os.system("clear") # <- this isn't needed why notttt lol
+  os.system("clear")
   
   
   def check():
       df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
       df = str(df)
   
-  """
-  def wait_until(somepredicate, timeout, period=0.25, *args, **kwargs):
-      mustend = time.time() + timeout
-      while time.time() < mustend:
-        if somepredicate(*args, **kwargs): return True
-        time.sleep(period)
-      return False
-  """
+  def wait_until(string, thecode):
+    global pause
+    pause = False
+    for x in thecode:
+      if string in x or string == x:
+        a = thecode.find(string)
+        thecode = thecode[a:]
+        # print(lines)
+      else:
+        a = thecode.find(string)
+        thecode = thecode[a+2:]
+
+    return thecode
+        
   
   allvars = {}
   what_if = {}
@@ -309,12 +315,8 @@ def filepath(fp):
   
       if lines == '': 
         pass
-      """
-      elif "/#" in lines:
-        wait_until("#/", 0)
-        readline2 = 1"""
-      # if "//" in lines:
-      #   pass
+      if "/*" in lines:
+        lines = wait_until("*/", lines)
       lines = lines.rstrip()
   
       # print(lines[:2])
@@ -326,6 +328,8 @@ def filepath(fp):
           e = lines.find("//")
           if e != -1:
             lines = lines[:e]
+      elif "/*" in lines:
+        lines = wait_until("*/", lines)
           
       elif "import(\"time\")" in lines or "import('time')" in lines:
         time_module = 1
