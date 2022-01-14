@@ -6,6 +6,7 @@ print(^"Hello {name}!")
 
 var variable = true
 
+/* 
 whatif variable != true {
 
-elseif variable == "hi" {
+elseif variable == "hi" { */
