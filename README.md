@@ -1,5 +1,7 @@
 > **\*\*Version 0.1.1.**
 
+[<img src="https://github.com/JBYT27/zsq/blob/main/docs/media/logo.jpeg"/>](https://github.com/JBYT27/zsq)
+
 # z^2
 > a complex language with high level programming and moderate syntax.
 
