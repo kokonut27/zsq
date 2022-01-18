@@ -1,2 +1,2 @@
-from zsq.main import *
+from zsq.__main__ import *
 
