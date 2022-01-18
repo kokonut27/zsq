@@ -15,11 +15,8 @@ $ git clone https://github.com/JBYT27/zsq.git
 2. Add an alias
 
 #### macOS/Linux
-If you use macOS Catalina or newer, you will use Z-Shell so you will have a `.zshrc` file in your home folder.
-
-Most distributions of Linux use Bash by default, so you will have a `.bashrc` file in your home folder.
-
-*Of course, it is possible to change your shell so you should check before running the command.*
+If you use macOS Catalina or newer, you will use Z-Shell so you will have a `.zshrc` file in your home folder. Most distributions of Linux use Bash by default, so you will have a `.bashrc` file in your home folder. 
+> *Of course, it is possible to change your shell so you should check before running the command.*
 
 Run the following command. If you use Bash replace `.zshrc` with `.bashrc`:
 ```zsh
