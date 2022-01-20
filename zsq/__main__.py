@@ -96,199 +96,175 @@ def filepath(fp):
   functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime(", "version("]
   
   def error(the_error):
-    print(red + bold + f"line {str(line)}: {code}\n{the_error}" + w)
+    print(red + bold + f'line {line}: {code}\n{the_error}' + w)
   
   def timeTime():
     if time_module == 1:
-          wrd = "time.time("
-          res = lines.partition(wrd)[2]
-          try:
-            res = res.replace(")", "")
-  
-            # print(res)
-  
-            if res != "" or res != " ":
-              if "}" in res:
-                return time.time()
-              else:
-                error("no arguments must be made inside of the function time.time!")
-                exit()
-            else:
-              return time.time()
-          except:
-            error("an error occurred while trying to time.time!")
-            exit()
+      wrd = "time.time("
+      res = lines.partition(wrd)[2]
+      try:
+        res = res.replace(")", "")
+
+        if "}" in res:
+          return time.time()
+        error("no arguments must be made inside of the function time.time!")
+        exit()
+      except:
+        error("an error occurred while trying to time.time!")
+        exit()
     else:
-          error("the 'time' module isn't imported or it doesn't exist!")
-          exit()
+      error("the 'time' module isn't imported or it doesn't exist!")
+      exit()
 
   def timeCurtime():
     if time_module == 1:
-          wrd = "time.curtime("
-          res = lines.partition(wrd)[2]
-          try:
-            res = res.replace(")", "")
-  
+      wrd = "time.curtime("
+      res = lines.partition(wrd)[2]
+      try:
+        res = res.replace(")", "")
+
             # print(res)
-  
-            if res == "" or res == " ":
-              error("time argument must be made inside of the function time.curtime!")
-              exit()
-            else:
-              if "}" in res:
-                # print(res)
-                return None
-              else:
-                error("no arguments must be made inside of the function time.curtime!")
-                exit()
-          except:
-            error("an error occurred while trying to time.curtime!")
-            exit()
+
+        if res in ["", " "]:
+          error("time argument must be made inside of the function time.curtime!")
+        elif "}" in res:
+          # print(res)
+          return None
+        else:
+          error("no arguments must be made inside of the function time.curtime!")
+        exit()
+      except:
+        error("an error occurred while trying to time.curtime!")
+        exit()
     else:
-          error("the 'time' module isn't imported or it doesn't exist!")
-          exit()
+      error("the 'time' module isn't imported or it doesn't exist!")
+      exit()
   
   def Print():
     #try:
-      if '")' in lines or "')" in lines or ")" in lines:
-        wrd = "print("
-        res = lines.partition(wrd)[2]
-        res2 = lines.partition(wrd)[2]
+    if '")' in lines or "')" in lines or ")" in lines:
+      wrd = "print("
+      res = lines.partition(wrd)[2]
+      res2 = lines.partition(wrd)[2]
         # print(res)
-        if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
-          for i in functions:
-            if i in res:
-              pass
-          else:
-            error("the 'print' starting quotations and ending quotations are different!")
-            exit()
+      if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
+        error("the 'print' starting quotations and ending quotations are different!")
+        exit()
+      else:
+        res = res.replace("\")","")
+        res = res.replace('\')',"")
+        res = res.replace("\\n", "\n")
+        res = res.replace("\\t", "\t")
+        if "\"" in res:
+          split_string = res.split("\")", -1)
+        elif "'" in res:
+          split_string = res.split("\')", -1)
         else:
-          res = res.replace("\")","")
-          res = res.replace('\')',"")
-          res = res.replace("\\n", "\n")
-          res = res.replace("\\t", "\t")
-          if "\"" in res:
-            split_string = res.split("\")", -1)
-          elif "'" in res:
-            split_string = res.split("\')", -1)
-          else:
-            for i in functions:
-              if i in res2:
-                pass
-              else:
-                error("the 'print' function is missing quotations!")
-                exit()
-            
-          res = split_string[0]
-          
+          for i in functions:
+            if i not in res2:
+              error("the 'print' function is missing quotations!")
+              exit()
+
+        res = split_string[0]
+
           # print(res)
           # print(res[0])
           
-          if res[0] == "^": # This allows variables to be referenced inside quotations, like f' strings
-            sq_str = True
-          else:
-            sq_str = False
-          res = res.replace("\")","")
-          res = res.replace('\')',"")
-          res = res.replace("\\n", "\n")
-          res = res.replace("\\t", "\t")
-          res = res.replace("\\)", ")")
-          res = res.replace("\\(", "(")
-          res = res.replace('\\"', '"')
-          res = res.replace("\\'", "'")
-          # colors: res = res.replace("{red}", red)
-          res = res.replace('"', "")
-          res = res.replace("'", "")
+        sq_str = res[0] == "^"
+        res = res.replace("\")","")
+        res = res.replace('\')',"")
+        res = res.replace("\\n", "\n")
+        res = res.replace("\\t", "\t")
+        res = res.replace("\\)", ")")
+        res = res.replace("\\(", "(")
+        res = res.replace('\\"', '"')
+        res = res.replace("\\'", "'")
+        # colors: res = res.replace("{red}", red)
+        res = res.replace('"', "")
+        res = res.replace("'", "")
           # res = res.replace(")","")
           
-          if sq_str:
-            if "{" in res:
-              if "}" in res:
-                start = "{"
-                end = "}"
-                check = res[res.find(start) + len(start):res.rfind(end)]
+        if sq_str and "{" in res and "}" in res:
+          start = "{"
+          end = "}"
+          check = res[res.find(start) + len(start):res.rfind(end)]
                 # print(check)
                 # print(allvars)
-                if check in allvars:
-                  # print(check)
-                  res = res.replace("{", "")
-                  res = res.replace("}", "")
-                  dffdfdfdf = allvars[check]
+          if check in allvars:
+            # print(check)
+            res = res.replace("{", "")
+            res = res.replace("}", "")
+            dffdfdfdf = allvars[check]
 
-                  # print(allvars[check])
-                  # print(check)
+            # print(allvars[check])
+            # print(check)
 
-                  # print(res)
-                  res = res.replace(check, str(dffdfdfdf))
-                  # print(res)
-                else:
-                  global PASS
-                  PASS = False
-
-                  # print(check)
-                  # print(res)
-                  if "version(" in check:
-                    wrd = "version("
-                    res = lines.partition(wrd)[2]
-                    res = res.replace(")", "")
-                    if res != "" or res != " ":
-                      if "}" in res:
-                        pass
-                      else:
-                        error("'version()' function argument must be empty!")
-                        exit()
-                    print("z^2 version " + Version)
-
-                    PASS = True
-                    
-                  elif "time.time(" in check:
-                    # print(check)
-                    # print(res)
-                    timeTime()
-                    res = res.replace("{", "")
-                    res = res.replace("}", "")
-                    print(time.time())
-                    PASS = True
-                  elif "time.curtime(" in check:
-                    # print(PASS)
-                    # print(check)
-                    # print(res)
-                    timeCurtime()
-                    wrd = "time.curtime("
-                    # res = lines.partition(wrd)[2]
-          
-                    res = res.replace("{", "")
-                    res = res.replace("}", "")
-                    res = res.replace("$YEAR", "%Y")
-                    res = res.replace("$MONTH", "%m")
-                    res = res.replace("$DAY", "%d")
-                    res = res.replace("$HOUR", "$H")
-                    res = res.replace("$MIN", "%M")
-                    res = res.replace("$SEC", "%S")
-                    # res = res.replace("$MISEC", "%f")
-                    parent = res.find("(")
-                    if parent != -1:
-                      a = int(parent)-1
-                      if res[a] == "e":
-                        res = res[parent+1:]
-                    print(time.strftime(res))
-                    # print(res)
-                    PASS = True
-                  else:
-                    error(f"'{varname}' variable does not exist!")
-                    exit()
-          if PASS:
-            pass
+            # print(res)
+            res = res.replace(check, str(dffdfdfdf))
+            # print(res)
           else:
-            try:
-              res = res.replace("^", "")
-            except:
-              pass
-            print(res, end="")
-            print()
-      else:
-        error("the 'print' statement must have a closing \")\"!")
-        exit()
+            global PASS
+            PASS = False
+
+                  # print(check)
+                  # print(res)
+            if "version(" in check:
+              wrd = "version("
+              res = lines.partition(wrd)[2]
+              res = res.replace(")", "")
+              if "}" not in res:
+                error("'version()' function argument must be empty!")
+                exit()
+              print("z^2 version " + Version)
+
+              PASS = True
+
+            elif "time.time(" in check:
+              # print(check)
+              # print(res)
+              timeTime()
+              res = res.replace("{", "")
+              res = res.replace("}", "")
+              print(time.time())
+              PASS = True
+            elif "time.curtime(" in check:
+              # print(PASS)
+              # print(check)
+              # print(res)
+              timeCurtime()
+              wrd = "time.curtime("
+              # res = lines.partition(wrd)[2]
+
+              res = res.replace("{", "")
+              res = res.replace("}", "")
+              res = res.replace("$YEAR", "%Y")
+              res = res.replace("$MONTH", "%m")
+              res = res.replace("$DAY", "%d")
+              res = res.replace("$HOUR", "$H")
+              res = res.replace("$MIN", "%M")
+              res = res.replace("$SEC", "%S")
+              # res = res.replace("$MISEC", "%f")
+              parent = res.find("(")
+              if parent != -1:
+                a = int(parent)-1
+                if res[a] == "e":
+                  res = res[parent+1:]
+              print(time.strftime(res))
+              # print(res)
+              PASS = True
+            else:
+              error(f"'{varname}' variable does not exist!")
+              exit()
+        if not PASS:
+          try:
+            res = res.replace("^", "")
+          except:
+            pass
+          print(res, end="")
+          print()
+    else:
+      error("the 'print' statement must have a closing \")\"!")
+      exit()
     #except:
       #print(bold + red + "the 'print' statement must have a closing \")\"!" + w)
       #exit()
