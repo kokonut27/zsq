@@ -511,7 +511,7 @@ def filepath(fp):
         symbols = ["!=", "==", "isin"]
         
         if symbols[0] in res:
-          a = res.find("!=")
+          a = res.find(symbols[0])
           if a != -1: # a double check 
             vare = res[:a]
           vare = vare.replace(" ", "")
@@ -632,10 +632,218 @@ def filepath(fp):
               
 
         elif symbols[1] in res:
-          pass
+          a = res.find(symbols[1])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  # vale = True
+
+                  if var == True:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  # vale = True
+
+                  if var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  if var == True or var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  if var == int:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  if var == float:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace("'", "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
 
         elif symbols[2] in res:
-          pass
+          a = res.find(symbols[2])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  # vale = True
+
+                  if var == True:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  # vale = True
+
+                  if var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  if var == True or var == False:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  if var == int:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  if var == float:
+                    what_if[vare] = False
+                  else:
+                    what_if[vare] = True
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace("'", "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
 
         else:
           error("'whatif' statement must have an operator!")
