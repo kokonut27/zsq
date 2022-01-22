@@ -30,17 +30,6 @@ bold = '\033[1m'
 end = '\033[0m'
 pink = '\033[95m'
 
-
-class zsqDB:
-  def __init__(self):
-    pass
-
-  def connection(self, **kwargs):
-    for i in kwargs:
-      return i
-
-
-
       
 #-------------Compiler----------------#
       
