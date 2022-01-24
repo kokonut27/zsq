@@ -58,8 +58,8 @@ def filepath(fp):
   
   
   def check():
-      df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
-      df = str(df)
+    df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
+    df = str(df)
   
   def wait_until(string, thecode):
     global pause
