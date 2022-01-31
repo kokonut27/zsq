@@ -5,7 +5,7 @@ import getpass
 import re
 import string
 import click
-from version import Version
+from info import *
 
 
 red = "\033[0;91m"
