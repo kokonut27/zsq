@@ -6,7 +6,7 @@ print(^"{version()}")
 
 var variable = true
 
-/* 
-whatif variable != true {
+
+/* whatif variable != true {
 
 elseif variable == "hi" { */

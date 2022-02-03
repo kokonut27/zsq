@@ -284,8 +284,12 @@ def filepath(fp):
         Pass = True
         continue
 
-      if "*/" in lines and Pass:
-        continue
+      try:
+        if "*/" in lines and Pass:
+          continue
+      except:
+        error(f"{lines} is not defined!")
+        exit()
       lines = lines.rstrip()
   
       # print(lines[:2])
@@ -595,12 +599,8 @@ def filepath(fp):
 
           
 
-          for x in file.readlines():
-            # print("hii <3")
-            # print(x)
-            if "elseif " in x:
-              wrd = "elseif "
-              res = lines.partition(wrd)[2]
+          if "elseif" in lines:
+            print("hello :0")
 
               
 
