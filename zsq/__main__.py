@@ -281,7 +281,11 @@ def filepath(fp):
       if lines == '': 
         pass
       if "/*" in lines:
-        lines = wait_until("*/", lines)
+        Pass = True
+        continue
+
+      if "*/" in lines and Pass:
+        continue
       lines = lines.rstrip()
   
       # print(lines[:2])
@@ -294,7 +298,11 @@ def filepath(fp):
           if e != -1:
             lines = lines[:e]
       elif "/*" in lines:
-        lines = wait_until("*/", lines)
+        Pass = True
+        continue
+
+      elif "*/" in lines and Pass:
+        continue
           
       elif "import(\"time\")" in lines or "import('time')" in lines:
         time_module = 1
