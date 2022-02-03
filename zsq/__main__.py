@@ -599,11 +599,11 @@ def filepath(fp):
 
           
 
-          if "elseif" in lines:
-            print("hello :0")
+          # if "elseif" in lines:
+          #   print("hello :0")
+          continue
 
-              
-
+        
         elif symbols[1] in res:
           a = res.find(symbols[1])
           if a != -1: # a double check 
@@ -710,6 +710,8 @@ def filepath(fp):
               what_if[vare] = False
             else:
               what_if[vare] = True
+
+          continue
 
         elif symbols[2] in res:
           a = res.find(symbols[2])
@@ -818,9 +820,18 @@ def filepath(fp):
             else:
               what_if[vare] = True
 
+          continue
+
         else:
           error("'whatif' statement must have an operator!")
           exit()
+
+      elif "elseif " in lines:
+        wrd = "elseif "
+        res = lines.partition(wrd)[2]
+        symbols = ["!=", "==", "isin"]
+
+        
 
       elif "version(" in lines:
         wrd = "version("
