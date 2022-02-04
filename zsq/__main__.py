@@ -1195,7 +1195,7 @@ def filepath(fp):
       elif "elseif " in lines:
         wrd = "elseif "
         res = lines.partition(wrd)[2]
-        symbols = ["!=", "==", "isin"]
+        symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
 
         
 
