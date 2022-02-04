@@ -6,6 +6,12 @@ print(^"{version()}")
 
 var variable = true
 
+print(^"{variable}")
+
+// var hi = 9
+
+print(^"{hi}")
+
 
 /* whatif variable != true {
 

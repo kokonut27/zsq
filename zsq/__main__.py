@@ -471,7 +471,7 @@ def filepath(fp):
       elif "whatif " in lines:
         wrd = "whatif "
         res = lines.partition(wrd)[2]
-        symbols = ["!=", "==", "isin"]
+        symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
         
         if symbols[0] in res:
           a = res.find(symbols[0])
@@ -569,7 +569,7 @@ def filepath(fp):
             vale = vale[:b]
             vale = vale.replace("'", "")
             vale = vale.replace("\"", "")
-            vale = vale.replace("'", "")
+            vale = vale.replace('"', "")
             vale = vale.replace("\\n", "\n")
             vale = vale.replace("\\t", "\t")
             vale = vale.replace("\\'", "'")
@@ -686,7 +686,7 @@ def filepath(fp):
             vale = vale[:b]
             vale = vale.replace("'", "")
             vale = vale.replace("\"", "")
-            vale = vale.replace("'", "")
+            vale = vale.replace('"', "")
             vale = vale.replace("\\n", "\n")
             vale = vale.replace("\\t", "\t")
             vale = vale.replace("\\'", "'")
@@ -795,7 +795,387 @@ def filepath(fp):
             vale = vale[:b]
             vale = vale.replace("'", "")
             vale = vale.replace("\"", "")
+            vale = vale.replace('"', "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
+
+          continue
+
+        elif symbols[3] in res:
+          a = res.find(symbols[3])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  error("variables cannot be greater or less than the classifier 'integer'!")
+                  exit()
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  error("variables cannot be greater or less than the classifier 'float'!")
+                  exit()
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
             vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace('"', "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
+              
+          continue
+
+        elif symbols[4] in res:
+          a = res.find(symbols[4])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  error("variables cannot be greater or less than the classifier 'integer'!")
+                  exit()
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  error("variables cannot be greater or less than the classifier 'float'!")
+                  exit()
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace('"', "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
+
+          continue
+
+        elif symbols[5] in res:
+          a = res.find(symbols[5])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  error("variables cannot be greater or less than the classifier 'integer'!")
+                  exit()
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  error("variables cannot be greater or less than the classifier 'float'!")
+                  exit()
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace('"', "")
+            vale = vale.replace("\\n", "\n")
+            vale = vale.replace("\\t", "\t")
+            vale = vale.replace("\\'", "'")
+            vale = vale.replace('\\"', "")
+            
+            if var == str(vale):
+              what_if[vare] = False
+            else:
+              what_if[vare] = True
+
+          continue
+
+        elif symbols[6] in res:
+          a = res.find(symbols[6])
+          if a != -1: # a double check 
+            vare = res[:a]
+          vare = vare.replace(" ", "")
+          try:
+            var = allvars[vare]
+          except:
+            error(f"'{vare}' variable does not exist!")
+            exit()
+          vale = res[a+2:]
+
+          # print(vale)
+          # print(vare)
+          
+          e = vale.find("\"")
+          if e == -1:
+            e = vale.find("'")
+            if e == -1:
+              if "true" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "true":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "false" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+                if vale == "false":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+                # elif "string" in vale:
+              elif "bool" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "bool":
+                  error("variables cannot be greater or less than a boolean!")
+                  exit()
+              elif "integer" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "integer":
+                  error("variables cannot be greater or less than the classifier 'integer'!")
+                  exit()
+                
+              elif "float" in vale:
+                vale = vale.replace(" ", "")
+                vale = vale.replace("{", "")
+
+                if vale == "float":
+                  error("variables cannot be greater or less than the classifier 'float'!")
+                  exit()
+
+              else:
+                error(f"'{vale}' is undefined!")
+                exit()
+                
+            else:
+              vale = vale[e+1:]
+              b = vale.find("'")
+              vale = vale[:b]
+              vale = vale.replace("'", "")
+              vale = vale.replace("\"", "")
+              vale = vale.replace("'", "")
+              vale = vale.replace("\\n", "\n")
+              vale = vale.replace("\\t", "\t")
+              vale = vale.replace("\\'", "'")
+              vale = vale.replace('\\"', "")
+              
+              if var == str(vale):
+                what_if[vare] = False
+              else:
+                what_if[vare] = True
+              
+          else:
+            vale = vale[e+1:]
+            b = vale.find('"')
+            vale = vale[:b]
+            vale = vale.replace("'", "")
+            vale = vale.replace("\"", "")
+            vale = vale.replace('"', "")
             vale = vale.replace("\\n", "\n")
             vale = vale.replace("\\t", "\t")
             vale = vale.replace("\\'", "'")
