@@ -30,7 +30,7 @@ bold = '\033[1m'
 end = '\033[0m'
 pink = '\033[95m'
 
-      
+
 #-------------Compiler----------------#
       
 # file errors
@@ -60,20 +60,6 @@ def filepath(fp):
   def check():
     df = re.findall("(?<=[AZaz])?(?!\d*=)[0-9.+-]+", lines)
     df = str(df)
-  
-  def wait_until(string, thecode):
-    global pause
-    pause = False
-    for x in thecode:
-      if string in x or string == x:
-        a = thecode.find(string)
-        thecode = thecode[a:]
-        # print(lines)
-      else:
-        a = thecode.find(string)
-        thecode = thecode[a+2:]
-
-    return thecode
         
   
   allvars = {}
@@ -81,7 +67,7 @@ def filepath(fp):
   line = 0
   read_line = 0
   PASS = False
-  var1 = "Undefined variable"
+  # var1 = "Undefined variable"
   functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime(", "version("]
   
   def error(the_error):
