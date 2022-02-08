@@ -436,6 +436,9 @@ def filepath(fp):
               allvars[varname] = True
             elif newvar == "false":
               allvars[varname] = False
+            elif newvar_type == int:
+              allvars[varname] = int(newvar)
+              # print(allvars[varname])
             else:
               error("variables must be named after there is a equal sign!")
               exit()
