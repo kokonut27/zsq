@@ -9,3 +9,11 @@ class zsqDB:
   def connection(self, **kwargs):
     for i in kwargs:
       return i
+
+  def add(self, **kwargs):
+    for i in kwargs:
+      return i
+
+  def remove(self, **kwargs):
+    for i in kwargs:
+      return i
