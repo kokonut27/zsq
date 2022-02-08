@@ -64,6 +64,7 @@ def filepath(fp):
   
   allvars = {}
   what_if = {}
+  correct_syntax = False
   line = 0
   read_line = 0
   PASS = False
@@ -1192,11 +1193,18 @@ def filepath(fp):
           error("'whatif' statement must have an operator!")
           exit()
 
-      elif "elseif " in lines:
-        wrd = "elseif "
-        res = lines.partition(wrd)[2]
-        symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
+      elif "}" in lines:
+        correct_syntax = True
+        continue
 
+      elif "elseif " in lines:
+        if correct_syntax:
+          wrd = "elseif "
+          res = lines.partition(wrd)[2]
+          symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
+        else:
+          error("'whatif' statement must have an ending '}'!")
+          exit()
         
 
       elif "version(" in lines:
