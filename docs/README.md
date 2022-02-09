@@ -1,3 +1,3 @@
-# z^2 docs
-> Yes, it's that one docs you're looking at.
+# z^2 Docs
 
+Deployed at [kokonut27.github.io/zsq](https://kokonut27.github.io/zsq)
