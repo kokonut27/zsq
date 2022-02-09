@@ -64,6 +64,7 @@ def filepath(fp):
   
   allvars = {}
   what_if = {}
+  all_packages = ["os", "time"]
   correct_syntax = False
   line = 0
   read_line = 0
@@ -296,6 +297,26 @@ def filepath(fp):
         time_module = 1
       elif "import(\"os\")" in lines or "import('os')" in lines:
         os_module = 1
+
+      elif "import(" in lines:
+        wrd = "import("
+        module = lines.partition(wrd)[2]
+        try:
+          split_string = module.split("\")", -1)
+        except:
+          split_string = newvar.split("')", -1)
+        module = split_string[0]
+
+        module = module.replace('"', '')
+        module = module.replace("'", "")
+
+        # print(module)
+
+        if module in all_packages:
+          pass
+        else:
+          error(f"'{module}' package does not exist!")
+          exit()
   
       elif "var " in lines:
         wrd = "var "
