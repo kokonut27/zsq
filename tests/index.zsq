@@ -8,7 +8,7 @@ var variable = true
 
 print(^"{variable}")
 
-// var hi = 9
+var hi = 9
 
 print(^"{hi}")
 

@@ -164,8 +164,8 @@ def filepath(fp):
           start = "{"
           end = "}"
           check = res[res.find(start) + len(start):res.rfind(end)]
-                # print(check)
-                # print(allvars)
+          # print(check)
+          # print(allvars)
           if check in allvars:
             # print(check)
             res = res.replace("{", "")
@@ -178,8 +178,9 @@ def filepath(fp):
             # print(res)
             res = res.replace(check, str(dffdfdfdf))
             # print(res)
+            PASS = False
           else:
-            global PASS
+            # global PASS
             PASS = False
 
                   # print(check)
@@ -194,7 +195,6 @@ def filepath(fp):
               print("z^2 version " + Version)
 
               PASS = True
-
             elif "time.time(" in check:
               # print(check)
               # print(res)
@@ -232,10 +232,7 @@ def filepath(fp):
               error(f"'{varname}' variable does not exist!")
               exit()
         if not PASS:
-          try:
-            res = res.replace("^", "")
-          except:
-            pass
+          res = res.replace("^", "")
           print(res, end="")
           print()
     else:
@@ -315,15 +312,34 @@ def filepath(fp):
           if find_space == -1:
             find_space1 = newvar.find("\'")
             if find_space1 == -1:
-              for i in newvar:
-                if i in ["1","2","3","4","5","6","7","8","9","0"]:
-                  newvar_type = int
+              # print("hello")
+              if "1" in newvar:
+                newvar_type = int
+                # print("hello")
+              elif "2" in newvar:
+                newvar_type = int
+              elif "3" in newvar:
+                newvar_type = int
+              elif "4" in newvar:
+                newvar_type = int
+              elif "5" in newvar:
+                newvar_type = int
+              elif "6" in newvar:
+                newvar_type = int
+              elif "7" in newvar:
+                newvar_type = int
+              elif "8" in newvar:
+                newvar_type = int
+              elif "9" in newvar:
+                newvar_type = int
+              elif "0" in newvar:
+                newvar_type = int
+              else:
+                if "true" in newvar or "false" in newvar:
+                  newvar_type = bool
                 else:
-                  if "true" in newvar or "false" in newvar:
-                    newvar_type = bool
-                  else:
-                    error("variables must be named!")
-                    exit()
+                  error("variables must be named!")
+                  exit()
             else:
               newvar_type = str
           else:
@@ -433,11 +449,12 @@ def filepath(fp):
                       error("starting quotations and end quotations must be the same!")
                       exit()
             elif newvar == "true":
-              allvars[varname] = True
+              allvars[varname] = "true"
             elif newvar == "false":
-              allvars[varname] = False
+              allvars[varname] = "false"
             elif newvar_type == int:
               allvars[varname] = int(newvar)
+              # print("ayo")
               # print(allvars[varname])
             else:
               error("variables must be named after there is a equal sign!")
@@ -502,7 +519,7 @@ def filepath(fp):
                 if vale == "true":
                   # vale = True
 
-                  if var == True:
+                  if var == "true":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -512,7 +529,7 @@ def filepath(fp):
                 if vale == "false":
                   # vale = True
 
-                  if var == False:
+                  if var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -522,7 +539,7 @@ def filepath(fp):
                 vale = vale.replace("{", "")
 
                 if vale == "bool":
-                  if var == True or var == False:
+                  if var == "true" or var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -619,7 +636,7 @@ def filepath(fp):
                 if vale == "true":
                   # vale = True
 
-                  if var == True:
+                  if var == "true":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -629,7 +646,7 @@ def filepath(fp):
                 if vale == "false":
                   # vale = True
 
-                  if var == False:
+                  if var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -639,7 +656,7 @@ def filepath(fp):
                 vale = vale.replace("{", "")
 
                 if vale == "bool":
-                  if var == True or var == False:
+                  if var == "true" or var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -728,7 +745,7 @@ def filepath(fp):
                 if vale == "true":
                   # vale = True
 
-                  if var == True:
+                  if var == "trueef":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -738,7 +755,7 @@ def filepath(fp):
                 if vale == "false":
                   # vale = True
 
-                  if var == False:
+                  if var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
@@ -748,7 +765,7 @@ def filepath(fp):
                 vale = vale.replace("{", "")
 
                 if vale == "bool":
-                  if var == True or var == False:
+                  if var == "true" or var == "false":
                     what_if[vare] = False
                   else:
                     what_if[vare] = True
