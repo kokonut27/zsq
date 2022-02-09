@@ -1,4 +1,4 @@
-> **\*\*Version 0.1.1.**
+> **\*\*Version 0.1.2.**
 
 [<img src="https://github.com/JBYT27/zsq/blob/main/docs/media/logo.jpeg"/>](https://github.com/JBYT27/zsq)
 
