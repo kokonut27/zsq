@@ -1,6 +1,6 @@
 > **\*\*Version 0.1.2.**
 
-[<img src="https://github.com/JBYT27/zsq/blob/main/docs/media/temp_logo.png"/>](https://github.com/JBYT27/zsq)
+[<img src="https://github.com/kokonut27/zsq/blob/main/docs/media/temp_logo.png"/>](https://github.com/kokonut27/zsq)
 
 # z^2
 > a complex language with high level programming and moderate syntax.
@@ -9,7 +9,7 @@
 ### Usage
 1. Clone this repository: 
 ```zsh
-$ git clone https://github.com/JBYT27/zsq.git
+$ git clone https://github.com/kokonut27/zsq.git
 ```
 
 2. Add an alias
@@ -70,4 +70,4 @@ for fib_seq in span(ask) {
 ```
 
 ### Contributing
-Feel free to contribute by [forking](https://github.com/JBYT27/zsq/network/members) the repo, and leaving a pull request!
+Feel free to contribute by [forking](https://github.com/kokonut27/zsq/network/members) the repo, and leaving a pull request!
