@@ -123,7 +123,6 @@ def filepath(fp):
       wrd = "print("
       res = lines.partition(wrd)[2]
       res2 = lines.partition(wrd)[2]
-        # print(res)
       if res[-3] == "\"" and res[0] == "\'" or res[-3] == "'" and res[0] == "\"":
         error("the 'print' starting quotations and ending quotations are different!")
         exit()
@@ -144,9 +143,6 @@ def filepath(fp):
 
         res = split_string[0]
 
-          # print(res)
-          # print(res[0])
-          
         sq_str = res[0] == "^"
         res = res.replace("\")","")
         res = res.replace('\')',"")
@@ -159,12 +155,12 @@ def filepath(fp):
         # colors: res = res.replace("{red}", red)
         res = res.replace('"', "")
         res = res.replace("'", "")
-          # res = res.replace(")","")
-          
         if sq_str and "{" in res and "}" in res:
           start = "{"
           end = "}"
           check = res[res.find(start) + len(start):res.rfind(end)]
+          # print(res)
+          PASS = False
           # print(check)
           # print(allvars)
           if check in allvars:
@@ -178,60 +174,52 @@ def filepath(fp):
 
             # print(res)
             res = res.replace(check, str(dffdfdfdf))
-            # print(res)
-            PASS = False
-          else:
-            # global PASS
-            PASS = False
-
-                  # print(check)
-                  # print(res)
-            if "version(" in check:
-              wrd = "version("
-              res = lines.partition(wrd)[2]
-              res = res.replace(")", "")
-              if "}" not in res:
-                error("'version()' function argument must be empty!")
-                exit()
-              print("z^2 version " + Version)
-
-              PASS = True
-            elif "time.time(" in check:
-              # print(check)
-              # print(res)
-              timeTime()
-              res = res.replace("{", "")
-              res = res.replace("}", "")
-              print(time.time())
-              PASS = True
-            elif "time.curtime(" in check:
-              # print(PASS)
-              # print(check)
-              # print(res)
-              timeCurtime()
-              wrd = "time.curtime("
-              # res = lines.partition(wrd)[2]
-
-              res = res.replace("{", "")
-              res = res.replace("}", "")
-              res = res.replace("$YEAR", "%Y")
-              res = res.replace("$MONTH", "%m")
-              res = res.replace("$DAY", "%d")
-              res = res.replace("$HOUR", "$H")
-              res = res.replace("$MIN", "%M")
-              res = res.replace("$SEC", "%S")
-              # res = res.replace("$MISEC", "%f")
-              parent = res.find("(")
-              if parent != -1:
-                a = int(parent)-1
-                if res[a] == "e":
-                  res = res[parent+1:]
-              print(time.strftime(res))
-              # print(res)
-              PASS = True
-            else:
-              error(f"'{varname}' variable does not exist!")
+          elif "version(" in check:
+            wrd = "version("
+            res = lines.partition(wrd)[2]
+            res = res.replace(")", "")
+            if "}" not in res:
+              error("'version()' function argument must be empty!")
               exit()
+            print(f'z^2 version {Version}')
+
+            PASS = True
+          elif "time.time(" in check:
+            # print(check)
+            # print(res)
+            timeTime()
+            res = res.replace("{", "")
+            res = res.replace("}", "")
+            print(time.time())
+            PASS = True
+          elif "time.curtime(" in check:
+            # print(PASS)
+            # print(check)
+            # print(res)
+            timeCurtime()
+            wrd = "time.curtime("
+            # res = lines.partition(wrd)[2]
+
+            res = res.replace("{", "")
+            res = res.replace("}", "")
+            res = res.replace("$YEAR", "%Y")
+            res = res.replace("$MONTH", "%m")
+            res = res.replace("$DAY", "%d")
+            res = res.replace("$HOUR", "$H")
+            res = res.replace("$MIN", "%M")
+            res = res.replace("$SEC", "%S")
+            # res = res.replace("$MISEC", "%f")
+            parent = res.find("(")
+            if parent != -1:
+              a = int(parent)-1
+              if res[a] == "e":
+                res = res[parent+1:]
+            print(time.strftime(res))
+            # print(res)
+            PASS = True
+          else:
+            error(f"'{varname}' variable does not exist!")
+            exit()
         if not PASS:
           res = res.replace("^", "")
           print(res, end="")
