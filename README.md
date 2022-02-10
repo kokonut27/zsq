@@ -62,7 +62,7 @@ function Fibonacci(num) { // Creates an arg 'num'
     return(Fibonacci(num-1) + Fibonacci(num-2))
   }
 
-ask = prompt("amount of fibonacci sequence? ")
+var ask = prompt("amount of fibonacci sequence? ")
 
 for fib_seq in span(ask) {
   print(Fibonacci(fib_seq))
