@@ -584,6 +584,12 @@ def filepath(fp):
                   else:
                     what_if[vare] = True
 
+              elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
+                if var != vale:
+                  what_if[vare] = True
+                else:
+                  what_if[vare] = False
+
               else:
                 error(f"'{vale}' is undefined!")
                 exit()
@@ -694,6 +700,12 @@ def filepath(fp):
                   else:
                     what_if[vare] = False
 
+              elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
+                if var == vale:
+                  what_if[vare] = True
+                else:
+                  what_if[vare] = False
+
               else:
                 error(f"'{vale}' is undefined!")
                 exit()
@@ -789,6 +801,12 @@ def filepath(fp):
                   error("variables cannot be in the classifier 'float'!")
                   exit()
 
+              elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
+                if var in vale:
+                  what_if[vare] = True
+                else:
+                  what_if[vare] = False
+
               else:
                 error(f"'{vale}' is undefined!")
                 exit()
@@ -805,10 +823,10 @@ def filepath(fp):
               vale = vale.replace("\\'", "'")
               vale = vale.replace('\\"', "")
               
-              if var == str(vale):
-                what_if[vare] = False
-              else:
+              if var in str(vale):
                 what_if[vare] = True
+              else:
+                what_if[vare] = False
               
           else:
             vale = vale[e+1:]
@@ -822,10 +840,10 @@ def filepath(fp):
             vale = vale.replace("\\'", "'")
             vale = vale.replace('\\"', "")
             
-            if var == str(vale):
-              what_if[vare] = False
-            else:
+            if var in str(vale):
               what_if[vare] = True
+            else:
+              what_if[vare] = False
 
           continue
 
@@ -884,6 +902,12 @@ def filepath(fp):
                   error("variables cannot be greater or less than the classifier 'float'!")
                   exit()
 
+              elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
+                if var >= vale:
+                  what_if[vare] = True
+                else:
+                  what_if[vare] = False
+
               else:
                 error(f"'{vale}' is undefined!")
                 exit()
@@ -900,10 +924,8 @@ def filepath(fp):
               vale = vale.replace("\\'", "'")
               vale = vale.replace('\\"', "")
               
-              if var == str(vale):
-                what_if[vare] = False
-              else:
-                what_if[vare] = True
+              error("variables cannot be greater than or equal to a string!")
+              exit()
               
           else:
             vale = vale[e+1:]
@@ -917,10 +939,8 @@ def filepath(fp):
             vale = vale.replace("\\'", "'")
             vale = vale.replace('\\"', "")
             
-            if var == str(vale):
-              what_if[vare] = False
-            else:
-              what_if[vare] = True
+            error("variables cannot be greater than or equal to a string!")
+            exit()
               
           continue
 
@@ -948,14 +968,14 @@ def filepath(fp):
                 vale = vale.replace("{", "")
                 
                 if vale == "true":
-                  error("variables cannot be greater or less than a boolean!")
+                  error("variables cannot be less than or equal to a boolean!")
                   exit()
               elif "false" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
                 
                 if vale == "false":
-                  error("variables cannot be greater or less than a boolean!")
+                  error("variables cannot be less than or equal to a boolean!")
                   exit()
                 # elif "string" in vale:
               elif "bool" in vale:
@@ -963,14 +983,14 @@ def filepath(fp):
                 vale = vale.replace("{", "")
 
                 if vale == "bool":
-                  error("variables cannot be greater or less than a boolean!")
+                  error("variables cannot be less than or equal to a boolean!")
                   exit()
               elif "integer" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
 
                 if vale == "integer":
-                  error("variables cannot be greater or less than the classifier 'integer'!")
+                  error("variables cannot be less than or equal to the classifier 'integer'!")
                   exit()
                 
               elif "float" in vale:
@@ -978,8 +998,14 @@ def filepath(fp):
                 vale = vale.replace("{", "")
 
                 if vale == "float":
-                  error("variables cannot be greater or less than the classifier 'float'!")
+                  error("variables cannot be less than or equal to the classifier 'float'!")
                   exit()
+
+              elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
+                if var <= vale:
+                  what_if[vare] = True
+                else:
+                  what_if[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -997,10 +1023,8 @@ def filepath(fp):
               vale = vale.replace("\\'", "'")
               vale = vale.replace('\\"', "")
               
-              if var == str(vale):
-                what_if[vare] = False
-              else:
-                what_if[vare] = True
+              error("variables cannot be less than or equal to a string!")
+              exit()
               
           else:
             vale = vale[e+1:]
@@ -1014,10 +1038,8 @@ def filepath(fp):
             vale = vale.replace("\\'", "'")
             vale = vale.replace('\\"', "")
             
-            if var == str(vale):
-              what_if[vare] = False
-            else:
-              what_if[vare] = True
+            error("variables cannot be less than or equal to a string!")
+            exit()
 
           continue
 
