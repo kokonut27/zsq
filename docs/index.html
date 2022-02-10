@@ -22,7 +22,44 @@
     <div class="content">
       <div class="intro">
         <h2> Welcome to z^2! </h2>
-        This website will give you all the information about z^2, including installation, contact information, and more! We hope you enjoy!
+        <h6>A complex, yet fun language.</h6>
+        <p class="des">This website will give you all the information about z^2, including installation, contact information, and more! We hope you enjoy!</p>
+      </div>
+
+      <div class="about">
+        <h2>About z^2</h2>
+        <p class="des">Z^2 is a complex language written in 
+<a href="https://python.org" target="_blank">Python3</a>. The language's main focus is to challenge hackers with the moderate syntax, and it's "behavior". "Behavior" meaning it's unique compiling with the code.</p>
+
+        <p class="des">A small example of some z^2 code is here:</p>
+
+        <p class="des">
+          <span class="comment">// A simple fibonacci sequence function</span>
+          <br>
+          <span class="comment">// Defines the Fibonacci function</span>
+          <br>
+          <span class="func">function</span> <span class="func_name">Fibonacci</span>(<span class="variable">num</span>) { <span class="comment">// Creates an arg 'num'</span>
+          <br>
+          <span class="whatif indent">whatif</span> <span class="variable">num</span> <span class="operator"><=</span> <span class="num">1</span> {
+          <br>
+          <span class="inside-whatif">return</span>(<span class="variable">num</span>)
+          <br>
+          <span class="indent">}</span>
+          <br>
+          <span class="what-if">else</span> {
+          <br>
+          <span class="inside-whatif">return</span>(<span class="func_name">Fibonacci</span>(<span class="variable">num</span>-<span class="num">1</span>) + <span class="func_name">Fibonacci</span>(<span class="variable">num</span>-<span class="num">2</span>))
+          <br>
+          <span class="indent">}</span>
+          <br></br>
+          <span class="variable">ask</span> = <span class="func">prompt</span>(<span class="quotes">"amount of fibonacci sequence? "</span>)
+          <br></br>
+          <span class="func">for</span> <span class="variable">fib_seq</span> <span class="func">in span</span>(<span class="variable">ask</span>) {
+          <br>
+          <span class="func indent">print</span>(<span class="func_name">Fibonacci</span>(<span class="variable">fib_seq</span>))
+          }
+        </p>
+      </div>
     </div>
   </body>
 </html>

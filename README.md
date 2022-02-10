@@ -54,22 +54,19 @@ Then you're all done!
 
 ```
 // Defines the Fibonacci function
-function Fibonacci(num) { // Creates an arg named num
-  whatif num == 0 { // If num equals 0:
-    return 0 // Return the value 0
-  }
-  elseif num == 1 { // Else if the num equals 1:
-    return 1 // Return the value 1
-  } 
-  elseif num == 2 { // Else if the num equals 2:
-    return 1 // Return the value 1
+function Fibonacci(num) { // Creates an arg 'num'
+  whatif num <= 1 {
+      return(num)
   }
   else {
-    return Fibonacci(num-1) + Fibonacci(num-2)
+    return(Fibonacci(num-1) + Fibonacci(num-2))
   }
-}
 
-print(Fibonacci(7))
+ask = prompt("amount of fibonacci sequence? ")
+
+for fib_seq in span(ask) {
+  print(Fibonacci(fib_seq))
+}
 ```
 
 ### Contributing
