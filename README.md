@@ -1,6 +1,6 @@
 > **\*\*Version 0.1.2.**
 
-[<img src="https://github.com/kokonut27/zsq/blob/main/docs/media/temp_logo.png"/>](https://github.com/kokonut27/zsq)
+[<img src="https://github.com/kokonut27/zsq/blob/main/docs/media/temp_logo.jpeg"/>](https://github.com/kokonut27/zsq)
 
 # z^2
 > a complex language with high level programming and moderate syntax.
