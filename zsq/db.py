@@ -1,6 +1,7 @@
 import click
 import random
 import time
+import replit
 
 class zsqDB:
   def __init__(self):
