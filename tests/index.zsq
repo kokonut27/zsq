@@ -16,6 +16,8 @@ var hi = 9
 print(^"{hi}")
 
 
-/* whatif variable != true {
+whatif variable == true {
+  print("hello")
+}
 
-elseif variable == "hi" { */
+/* elseif variable == "hi" { */

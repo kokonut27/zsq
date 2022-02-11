@@ -118,6 +118,7 @@ def filepath(fp):
       exit()
   
   def Print():
+    global PASS
     #try:
     if '")' in lines or "')" in lines or ")" in lines:
       wrd = "print("
