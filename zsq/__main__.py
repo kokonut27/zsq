@@ -1235,6 +1235,12 @@ def filepath(fp):
           error("'whatif' statement must have an operator!")
           exit()
 
+      elif lines:
+        if what_if[vare] == True:
+          continue
+        else:
+          pass
+
       elif "}" in lines:
         correct_syntax = True
         continue
