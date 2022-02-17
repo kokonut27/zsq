@@ -502,7 +502,7 @@ def filepath(fp):
       elif "whatif " in lines:
         wrd = "whatif "
         res = lines.partition(wrd)[2]
-        symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
+        symbols = ["!=", "==", "isin", ">=", "<=", ">", "<"]
         
         if symbols[0] in res:
           a = res.find(symbols[0])
@@ -1249,7 +1249,7 @@ def filepath(fp):
         if correct_syntax:
           wrd = "elseif "
           res = lines.partition(wrd)[2]
-          symbols = ["!=", "==", "isin", ">=", "<=", ">", ">"]
+          symbols = ["!=", "==", "isin", ">=", "<=", ">", "<"]
         else:
           error("'whatif' statement must have an ending '}'!")
           exit()
@@ -1301,8 +1301,11 @@ def filepath(fp):
         if lines == "" or lines == " " or lines == "  " or lines == "\n":
           pass
         else:
-          error(f"{lines} is not defined!")
-          exit()
+          for char in lines:
+            for funcs in functions:
+              if char != funcs: # add more args like "and if ..."
+                error(f"{lines} is not defined!")
+                exit()
 
 
 if __name__ == "__main__":
