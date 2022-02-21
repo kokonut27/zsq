@@ -100,12 +100,9 @@ def filepath(fp):
       try:
         res = res.replace(")", "")
 
-            # print(res)
-
         if res in ["", " "]:
           error("time argument must be made inside of the function time.curtime!")
         elif "}" in res:
-          # print(res)
           return None
         else:
           error("no arguments must be made inside of the function time.curtime!")
