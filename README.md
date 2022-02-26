@@ -56,7 +56,7 @@ Then you're all done!
 // Defines the Fibonacci function
 function Fibonacci(num) { // Creates an arg 'num'
   whatif num <= 1 {
-      return(num)
+    return(num)
   }
   else {
     return(Fibonacci(num-1) + Fibonacci(num-2))
