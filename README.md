@@ -69,5 +69,7 @@ for fib_seq in span(ask) {
 }
 ```
 
+Visit [EXAMPLES.md](https://github.com/kokonut27/zsq/tree/main/examples) for more examples.
+
 ### Contributing
 Feel free to contribute by [forking](https://github.com/kokonut27/zsq/network/members) the repo, and leaving a pull request!
