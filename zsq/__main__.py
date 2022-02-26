@@ -31,7 +31,7 @@ end = '\033[0m'
 pink = '\033[95m'
 
 
-#-------------Compiler----------------#
+
       
 # file errors
 class nonexistantfilepath(Exception):
@@ -1234,9 +1234,9 @@ def filepath(fp):
 
       elif lines:
         if what_if[vare] == True:
-          continue
-        else:
           pass
+        else:
+          continue
 
       elif "}" in lines:
         correct_syntax = True
