@@ -1,6 +1,6 @@
 function Fibonacci(num) {
   whatif num <= 1 {
-      return(num)
+    return(num)
   }
   else {
     return(Fibonacci(num-1) + Fibonacci(num-2))

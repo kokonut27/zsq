@@ -31,7 +31,6 @@ end = '\033[0m'
 pink = '\033[95m'
 
 
-
       
 # file errors
 class nonexistantfilepath(Exception):
@@ -69,7 +68,6 @@ def filepath(fp):
   line = 0
   read_line = 0
   PASS = False
-  # var1 = "Undefined variable"
   functions = ["print(", "prompt(", "time.time(", "time.rest(", "time.curtime(", "version("]
   
   def error(the_error):
@@ -112,6 +110,21 @@ def filepath(fp):
         exit()
     else:
       error("the 'time' module isn't imported or it doesn't exist!")
+      exit()
+
+  def osSystem():
+    if os_module == 1:
+      wrd = "os.system("
+      res = lines.partition(wrd)[2]
+      try:
+        res = res.replace(")", "")
+
+        print(res)
+      except:
+        error("an error occurred while trying to os.system!")
+        exit()
+    else:
+      error("the 'os' module isn't imported or it doesn't exist!")
       exit()
   
   def Print():
@@ -1233,10 +1246,13 @@ def filepath(fp):
           exit()
 
       elif lines:
+        """
         if what_if[vare] == True:
           pass
         else:
           continue
+        """
+        pass
 
       elif "}" in lines:
         correct_syntax = True
@@ -1261,6 +1277,13 @@ def filepath(fp):
           exit()
         else:
           pass
+
+      elif "os.system(" in lines:
+        if os_module == 1:
+          osSystem()
+        else:
+          error("the 'os' module isn't imported or it doesn't exist!")
+          exit()
   
       elif "time.rest(" in lines:
         if time_module == 1:
