@@ -1,6 +1,10 @@
 > **\*\*Version 0.1.3.**
 
 [<img src="https://github.com/kokonut27/zsq/blob/main/docs/media/temp_logo.jpeg"/>](https://github.com/kokonut27/zsq)
+[![issues](https://img.shields.io/github/issues/kokonut27/zsq)](https://github.com/kokonut27/zsq/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/kokonut27/zsq)](https://github.com/kokonut27/zsq/pulls)
+![code size](https://img.shields.io/github/languages/code-size/kokonut27/zsq)
+![total lines](https://img.shields.io/tokei/lines/github.com/kokonut27/zsq?color=176606)
 
 # z^2
 > a complex language with high level programming and moderate syntax.
