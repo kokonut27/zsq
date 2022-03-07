@@ -2,8 +2,6 @@
 
 import("os")
 
-os.system("hello")
-
 var name = prompt("What is your name?\n: ")
 
 print(^"Hello {name}!")
@@ -18,6 +16,7 @@ var hi = 9
 
 print(^"{hi}")
 
+os.system("hi")
 
 whatif variable != true {
   print("hello")

@@ -245,6 +245,7 @@ def filepath(fp):
   
   newvar = 0
   time_module = 0
+  os_module = 0
   file = open(fp)
   readline2 = 0
   for lines in file.readlines():
@@ -1275,8 +1276,6 @@ def filepath(fp):
         if res != "" or res != " ":
           error("'version()' function argument must be empty!")
           exit()
-        else:
-          pass
 
       elif "os.system(" in lines:
         if os_module == 1:
