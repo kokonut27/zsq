@@ -8,7 +8,6 @@ import click
 from info import *
 
 
-
 red = "\033[0;91m"
 w = "\033[0;37m"
 black = "\033[0;30m"
@@ -39,6 +38,13 @@ class nonexistantfilepath(Exception):
 class nonzsqfile(Exception):
   pass
 
+# db :pensive:
+class database:
+  def __init__(self, db_name):
+    self.name = db_name
+    # use mongodb 
+    
+# whole code :0
 @click.command()
 @click.argument("fp", default="index.zsq")
 def filepath(fp):
