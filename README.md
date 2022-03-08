@@ -41,7 +41,7 @@ $ alias zsq="python -B zsq"
 ```
 However, whenever your repl is reloaded you will need to re-run the command.
 
---- 
+<br>
 
 3. Run z^2
 
