@@ -1,6 +1,6 @@
 [<img src="https://github.com/kokonut27/zsq/blob/main/docs/media/temp_logo.jpeg"/>](https://github.com/kokonut27/zsq)
 <br>
-[![grade](https://img.shields.io/lgtm/grade/python/g/kokonut27/zsq.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kokonut27/zsq/context:python)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/kokonut27/zsq.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kokonut27/zsq/context:python)
 [![code size](https://img.shields.io/github/languages/code-size/kokonut27/zsq)](https://github.com/kokonut27/zsq)
 [![version](https://img.shields.io/badge/version-0.1.3-orange)](https://github.com/kokonut27/zsq/releases)
 
