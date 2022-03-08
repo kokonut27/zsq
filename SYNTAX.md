@@ -6,20 +6,24 @@
 
 `/* ... */`: Create a multi-line comment
 
-### `print` func.
-`print("<string>/<boolean>")`: Prints a String or Boolean.
-* `*args`: String, Boolean
+### `print()`
+`print("<string>/<boolean>/<integer>")`: Prints a String, Integer or Boolean.
+* `*args`: String, Integer, Boolean
   * `print(^"{<variable_name>}")`: `^` string - print variable 
 
-### `prompt` func.
-`prompt("<string>/<variable_name>")`: Input a String, or variable.
-* `*args`: String, variable
+### `prompt()`
+`prompt("<string>/<variable_name>/<integer>")`: Input a String, variable or integer.
+* `*args`: String, variable, integer
 
-### `var` func.
+### `cprompt()`
+`cprompt("<string>/variable_name>/<integer>")`: Input a String, variable or integer without the cursor and text showing.
+* `*args`: String, variable, integer
+
+### `var`
 `var <variable_name>`: Create a variable
 * `= <variable_value>`: Add a value to a variable
 
-### `whatif` statement
+### `whatif`
 `whatif <variable_name> <operator> <value> {`: If statement
 * `<variable_name>`: Variable name
 * `<operator>`: An operator (`>`, `<`, `<=`, `>=`, `==`, `!=`, `isin`)
