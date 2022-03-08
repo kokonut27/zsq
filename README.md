@@ -54,7 +54,7 @@ Then you're all done!
 ### Example program
 > This is a current work in progress as of right now
 
-```
+```js
 // Defines the Fibonacci function
 function Fibonacci(num) { // Creates an arg 'num'
   whatif num <= 1 {
