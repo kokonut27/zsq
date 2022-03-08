@@ -1,5 +1,6 @@
 from setuptools import setup
 
+
 setup(
     name="z^2",
     version="0.1.4",
