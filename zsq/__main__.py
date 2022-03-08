@@ -3,8 +3,8 @@ import os
 import sys
 import getpass
 import re
-import string
 import click
+# import cursor
 from info import *
 
 
@@ -442,6 +442,26 @@ def filepath(fp):
                   allvars[varname] = value
                   
                   FUNC = True
+                elif "cprompt(" in newvar:
+                  wrd = "prompt("
+                  var = lines.partition(wrd)[2]
+                  split_string = var.split(")", -1)
+                  var = var.replace(')','')
+                  var = var.replace('\"',"")
+                  var = var.replace('\'',"")
+                  var = var.replace("\\n", "\n")
+                  var = var.replace("\\t", "\t")
+                  var = var.replace("\\)", ")")
+                  var = var.replace("\\(", "(")
+                  var = var.replace('\\"', '"')
+                  var = var.replace("\\'", "'")
+                  # var = var = split_string[0]
+                  # var = var.strip(")")
+                  
+                  value = getpass.getpass(prompt=var, stream=None)
+                  allvars[varname] = value
+                  
+                  FUNC = True
   
             
             if "'" in newvar or "\"" in newvar:
@@ -505,7 +525,23 @@ def filepath(fp):
         # var = var.strip(")")
         
         input(var)
-  
+
+      elif "cprompt(" in lines:
+        wrd = "cprompt("
+        var = lines.partition(wrd)[2]
+        split_string = var.split(")", -1)
+        var = var.replace(')','')
+        var = var.replace('\"',"")
+        var = var.replace('\'',"")
+        var = var.replace("\\n", "\n")
+        var = var.replace("\\t", "\t")
+        var = var.replace("\\)", ")")
+        var = var.replace("\\(", "(")
+        var = var.replace('\\"', '"')
+        var = var.replace("\\'", "'")
+
+        getpass.getpass(prompt=var, stream=None)
+        
   
       elif "print(" in lines:
         Print()
