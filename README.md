@@ -4,7 +4,7 @@
 ![build](https://github.com/kokonut27/zsq/actions/workflows/format.yml/badge.svg)
 [![code size](https://img.shields.io/github/languages/code-size/kokonut27/zsq)](https://github.com/kokonut27/zsq)
 [![version](https://img.shields.io/badge/version-0.1.4-orange)](https://github.com/kokonut27/zsq/releases)
-
+ 
 # z^2
 > a complex language with high level programming and moderate syntax.
 
