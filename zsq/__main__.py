@@ -4,8 +4,14 @@ import sys
 import getpass
 import re
 import click
+import pymongo
 # import cursor
 from info import *
+
+try:
+  os.system('pip install dnspython')
+except:
+  exit()
 
 
 red = "\033[0;91m"
@@ -40,9 +46,10 @@ class nonzsqfile(Exception):
 
 # db :pensive:
 class database:
-  def __init__(self, db_name):
-    self.name = db_name
-    # use mongodb 
+  client = pymongo.MongoClient(os.getenv("connection_string"))
+
+  def return_database():
+    return database.client
     
 # whole code :0
 @click.command()
@@ -1372,3 +1379,4 @@ def filepath(fp):
 
 if __name__ == "__main__":
   filepath()
+  # print(database.return_database())
