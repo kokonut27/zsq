@@ -11,6 +11,7 @@ from info import *
 try:
   os.system('pip install dnspython')
 except:
+  print("could not download dnspython - try again later")
   exit()
 
 
