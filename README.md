@@ -34,13 +34,9 @@ echo "alias zsq='python -B zsq'" >> .bashrc
 ```
 
 #### Alternative shell
-> I suggest this alternative for those who use Replit as their code editor
-
-An alternative to this is copying the following code, and pasting it into the shell:
 ```zsh
 $ alias zsq="python -B zsq"
 ```
-However, whenever your repl is reloaded you will need to re-run the command.
 
 <br>
 
