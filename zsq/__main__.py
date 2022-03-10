@@ -263,6 +263,7 @@ def filepath(fp):
   os_module = 0
   file = open(fp)
   readline2 = 0
+  print(f"> zsq {fp}")
   for lines in file.readlines():
       line+=1
       if readline2 == 1:
