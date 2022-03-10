@@ -33,7 +33,7 @@ echo "alias zsq='python -B zsq'" >> .zshrc
 echo "alias zsq='python -B zsq'" >> .bashrc
 ```
 
-#### Alternative shell
+#### Shell
 ```zsh
 $ alias zsq="python -B zsq"
 ```
