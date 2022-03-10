@@ -49,8 +49,8 @@ class nonzsqfile(Exception):
 class database:
   client = pymongo.MongoClient(os.getenv("connection_string"))
 
-  def return_database():
-    return database.client
+  def return_database(db_name):
+    return database.client[db_name]
     
 # whole code :0
 @click.command()
@@ -68,6 +68,7 @@ def filepath(fp):
 
   content = f.read()
   colist = content.split("\n")
+  # console is cleared here
   os.system("clear")
   
   
@@ -78,7 +79,7 @@ def filepath(fp):
   
   allvars = {}
   what_if = {}
-  all_packages = ["os", "time"]
+  all_packages = ["os", "time", "math"]
   correct_syntax = False
   line = 0
   read_line = 0
