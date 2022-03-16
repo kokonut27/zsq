@@ -297,8 +297,7 @@ def filepath(fp):
       # print(lines[:2])
       
       if lines[:2] == "//":
-        pass
-        read_line = 0
+        continue
       elif "//" in lines:
           e = lines.find("//")
           if e != -1:
@@ -1383,4 +1382,4 @@ def filepath(fp):
 if __name__ == "__main__":
   filepath()
   
-  Database = database.return_database()
+  Database = database()
