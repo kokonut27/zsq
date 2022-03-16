@@ -179,7 +179,19 @@ def filepath(fp):
         res = res.replace("\\(", "(")
         res = res.replace('\\"', '"')
         res = res.replace("\\'", "'")
-        # colors: res = res.replace("{red}", red)
+        if color_module == 1:
+          res = res.replace("{color.red}", red)
+          res = res.replace("{color.blue}", blue)
+          res = res.replace("{color.yellow}", yellow)
+          res = res.replace("{color.green}", green)
+          res = res.replace("{color.purple}", magenta)
+          res = res.replace("{color.cyan}", cyan)
+          res = res.replace("{color.white}", white)
+          res = res.replace("{color.reset}", w)
+        elif "{color.red}" in res or "{color.blue}" in res or "{color.yellow}" in res or "{color.green}" in res or "{color.purple}" in res or "{color.cyan}" in res or "{color.white}" in res or "{color.reset}" in res:
+          if color_module == 1:
+            error("the 'color' module isn't imported or doesn't exist!")
+            exit()
         res = res.replace('"', "")
         res = res.replace("'", "")
         if sq_str and "{" in res and "}" in res:
