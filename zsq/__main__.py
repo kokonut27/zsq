@@ -262,9 +262,11 @@ def filepath(fp):
   newvar = 0
   time_module = 0
   os_module = 0
+  color_module = 0
+  math_module = 0
   file = open(fp)
   readline2 = 0
-  print(f"> zsq {fp}")
+  print(f"{yellow}{bold}>{w} zsq {fp}")
   for lines in file.readlines():
       line+=1
       if readline2 == 1:
@@ -309,10 +311,14 @@ def filepath(fp):
       elif "*/" in lines and Pass:
         continue
           
-      elif "import(\"time\")" in lines or "import('time')" in lines:
+      if "import(\"time\")" in lines or "import('time')" in lines:
         time_module = 1
-      elif "import(\"os\")" in lines or "import('os')" in lines:
+      if "import(\"os\")" in lines or "import('os')" in lines:
         os_module = 1
+      if "import(\"math\")" in lines or "import('os')" in lines:
+        math_module = 1
+      if "import(\"color\")" in lines or "import('color')" in lines:
+        color_module = 1
 
       elif "import(" in lines:
         wrd = "import("
