@@ -79,7 +79,7 @@ def filepath(fp):
   
   allvars = {}
   what_if = {}
-  all_packages = ["os", "time", "math"]
+  all_packages = ["os", "time", "math", "color"]
   correct_syntax = False
   line = 0
   read_line = 0
