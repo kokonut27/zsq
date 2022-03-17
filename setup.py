@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="z^2",
-    version="0.1.4",
+    version="0.1.7",
     description="The z^2 Programming Language",
     url="https://github.com/kokonut27/zsq",
     author="kokonut27",

@@ -5,7 +5,6 @@ import getpass
 import re
 import click
 import pymongo
-# import cursor
 from info import *
 
 try:
@@ -44,6 +43,7 @@ class nonexistantfilepath(Exception):
   pass
 class nonzsqfile(Exception):
   pass
+
 
 # db :pensive:
 class database:
