@@ -46,11 +46,28 @@ class nonzsqfile(Exception):
 
 
 # db :pensive:
-class database:
-  client = pymongo.MongoClient(os.getenv("connection_string"))
+class database():
+  def __init__(self):
+    self.client = pymongo.MongoClient(os.getenv("connection_string"))
+  
+    return self.client["collection_all_db"]
+  
+  def create_database(self, db_name):
+    db = database()
+    collection = db[db_name]
+    self.collection = collection
+    return
+  
+  def insert_in(self, item_name, *content):
+    if "{" not in content:
+      raise Exception("'content' args must be a dict!")
 
-  def return_database(db_name):
-    return database.client[db_name]
+    content = dict(content)
+    content["_id"] = "COL" + # use database to keep track of collection number
+    
+    self.collection.insert_one(content)
+    
+    return 
     
 # whole code :0
 @click.command()
@@ -1399,6 +1416,8 @@ def filepath(fp):
 
 
 if __name__ == "__main__":
-  filepath()
+  db = database()
+
   
-  Database = database()
+  
+  filepath()
