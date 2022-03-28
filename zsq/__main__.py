@@ -69,7 +69,7 @@ class database():
     
     return 
     
-# whole code :0
+
 @click.command()
 @click.argument("fp", default="index.zsq")
 def filepath(fp):
