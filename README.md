@@ -51,8 +51,6 @@ $ zsq index.zsq
 Then you're all done!
 
 ### Example program
-> This is a current work in progress as of right now
-
 ```js
 // Defines the Fibonacci function
 function Fibonacci(num) { // Creates an arg 'num'
@@ -69,8 +67,8 @@ for fib_seq in span(ask) {
   print(Fibonacci(fib_seq))
 }
 ```
-
-Visit [EXAMPLES.md](https://github.com/kokonut27/zsq/tree/main/examples) for more examples.
+> This is a current work in progress as of right now.
+> Visit [EXAMPLES.md](https://github.com/kokonut27/zsq/tree/main/examples) for more examples.
 
 ### Contributing
 Feel free to contribute by [forking](https://github.com/kokonut27/zsq/network/members) the repo, and leaving a pull request!
