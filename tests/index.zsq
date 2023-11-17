@@ -16,7 +16,7 @@ var hi = 9
 
 print(^"{hi}")
 
-os.system("hi")
+os.system("clear")
 
 whatif variable != true {
   print("hello")

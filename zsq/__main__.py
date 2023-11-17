@@ -63,7 +63,7 @@ class database():
       raise Exception("'content' args must be a dict!")
 
     content = dict(content)
-    content["_id"] = "COL" + # use database to keep track of collection number
+    #content["_id"] = "COL" + # use database to keep track of collection number
     
     self.collection.insert_one(content)
     
@@ -1414,9 +1414,11 @@ def filepath(fp):
                 error(f"{lines} is not defined!")
                 exit()
 
+  print(f"{yellow}{bold}>{w} ") # shows that file has been successfully run
+
 
 if __name__ == "__main__":
-  db = database()
+  #db = database()
 
   
   
