@@ -7,11 +7,13 @@ import click
 import pymongo
 from info import *
 
+'''
 try:
   os.system('pip install dnspython')
 except:
   print("could not download dnspython - try again later")
   exit()
+'''
 
 
 red = "\033[0;91m"
@@ -45,6 +47,7 @@ class nonzsqfile(Exception):
   pass
 
 
+'''
 # db :pensive:
 class database():
   def __init__(self):
@@ -68,6 +71,7 @@ class database():
     self.collection.insert_one(content)
     
     return 
+'''
     
 
 @click.command()
@@ -95,7 +99,7 @@ def filepath(fp):
         
   
   allvars = {}
-  what_if = {}
+  condition = {}
   all_packages = ["os", "time", "math", "color"]
   correct_syntax = False
   line = 0
@@ -597,8 +601,8 @@ def filepath(fp):
       elif "print(" in lines:
         Print()
       
-      elif "whatif " in lines:
-        wrd = "whatif "
+      elif "condition " in lines:
+        wrd = "condition "
         res = lines.partition(wrd)[2]
         symbols = ["!=", "==", "isin", ">=", "<=", ">", "<"]
         
@@ -625,22 +629,24 @@ def filepath(fp):
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
                 if vale == "true":
+                  print("EAEA")
                   # vale = True
 
                   if var == "true":
-                    what_if[vare] = False
-                  else:
-                    what_if[vare] = True
+                    condition[vare] = False
+                  elif var == "false":
+                    condition[vare] = True
               elif "false" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
                 if vale == "false":
                   # vale = True
+                  print("AEAE")
 
                   if var == "false":
-                    what_if[vare] = False
-                  else:
-                    what_if[vare] = True
+                    condition[vare] = False
+                  elif var == "true":
+                    condition[vare] = True
                 # elif "string" in vale:
               elif "bool" in vale:
                 vale = vale.replace(" ", "")
@@ -648,18 +654,18 @@ def filepath(fp):
 
                 if vale == "bool":
                   if var == "true" or var == "false":
-                    what_if[vare] = False
+                    condition[vare] = False
                   else:
-                    what_if[vare] = True
+                    condition[vare] = True
               elif "integer" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
 
                 if vale == "integer":
                   if var == int:
-                    what_if[vare] = False
+                    condition[vare] = False
                   else:
-                    what_if[vare] = True
+                    condition[vare] = True
                 
               elif "float" in vale:
                 vale = vale.replace(" ", "")
@@ -667,15 +673,15 @@ def filepath(fp):
 
                 if vale == "float":
                   if var == float:
-                    what_if[vare] = False
+                    condition[vare] = False
                   else:
-                    what_if[vare] = True
+                    condition[vare] = True
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var != vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -694,9 +700,9 @@ def filepath(fp):
               vale = vale.replace('\\"', "")
               
               if var == str(vale):
-                what_if[vare] = False
+                condition[vare] = False
               else:
-                what_if[vare] = True
+                condition[vare] = True
               
           else:
             vale = vale[e+1:]
@@ -711,9 +717,9 @@ def filepath(fp):
             vale = vale.replace('\\"', "")
             
             if var == str(vale):
-              what_if[vare] = False
+              condition[vare] = False
             else:
-              what_if[vare] = True
+              condition[vare] = True
               
           continue
 
@@ -744,9 +750,9 @@ def filepath(fp):
                   # vale = True
 
                   if var == "true":
-                    what_if[vare] = True
+                    condition[vare] = True
                   else:
-                    what_if[vare] = False
+                    condition[vare] = False
               elif "false" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
@@ -754,9 +760,9 @@ def filepath(fp):
                   # vale = True
 
                   if var == "false":
-                    what_if[vare] = False
+                    condition[vare] = False
                   else:
-                    what_if[vare] = True
+                    condition[vare] = True
                 # elif "string" in vale:
               elif "bool" in vale:
                 vale = vale.replace(" ", "")
@@ -764,18 +770,18 @@ def filepath(fp):
 
                 if vale == "bool":
                   if var == "true" or var == "false":
-                    what_if[vare] = True
+                    condition[vare] = True
                   else:
-                    what_if[vare] = False
+                    condition[vare] = False
               elif "integer" in vale:
                 vale = vale.replace(" ", "")
                 vale = vale.replace("{", "")
 
                 if vale == "integer":
                   if var == int:
-                    what_if[vare] = True
+                    condition[vare] = True
                   else:
-                    what_if[vare] = False
+                    condition[vare] = False
                 
               elif "float" in vale:
                 vale = vale.replace(" ", "")
@@ -783,15 +789,15 @@ def filepath(fp):
 
                 if vale == "float":
                   if var == float:
-                    what_if[vare] = True
+                    condition[vare] = True
                   else:
-                    what_if[vare] = False
+                    condition[vare] = False
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var == vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -810,9 +816,9 @@ def filepath(fp):
               vale = vale.replace('\\"', "")
               
               if var == str(vale):
-                what_if[vare] = True
+                condition[vare] = True
               else:
-                what_if[vare] = False
+                condition[vare] = False
               
           else:
             vale = vale[e+1:]
@@ -827,9 +833,9 @@ def filepath(fp):
             vale = vale.replace('\\"', "")
             
             if var == str(vale):
-              what_if[vare] = True
+              condition[vare] = True
             else:
-              what_if[vare] = False
+              condition[vare] = False
 
           continue
 
@@ -890,9 +896,9 @@ def filepath(fp):
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var in vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -911,9 +917,9 @@ def filepath(fp):
               vale = vale.replace('\\"', "")
               
               if var in str(vale):
-                what_if[vare] = True
+                condition[vare] = True
               else:
-                what_if[vare] = False
+                condition[vare] = False
               
           else:
             vale = vale[e+1:]
@@ -928,9 +934,9 @@ def filepath(fp):
             vale = vale.replace('\\"', "")
             
             if var in str(vale):
-              what_if[vare] = True
+              condition[vare] = True
             else:
-              what_if[vare] = False
+              condition[vare] = False
 
           continue
 
@@ -991,9 +997,9 @@ def filepath(fp):
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var >= vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -1090,9 +1096,9 @@ def filepath(fp):
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var <= vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -1189,9 +1195,9 @@ def filepath(fp):
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var < vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -1289,9 +1295,9 @@ def filepath(fp):
 
               elif 1 in vale or 2 in vale or 3 in vale or 4 in vale or 5 in vale or 6 in vale or 7 in vale or 8 in vale or 9 in vale or 0 in vale:
                 if var > vale:
-                  what_if[vare] = True
+                  condition[vare] = True
                 else:
-                  what_if[vare] = False
+                  condition[vare] = False
 
               else:
                 error(f"'{vale}' is undefined!")
@@ -1330,12 +1336,12 @@ def filepath(fp):
           continue
 
         else:
-          error("'whatif' statement must have an operator!")
+          error("'condition' statement must have an operator!")
           exit()
 
       elif lines:
         """
-        if what_if[vare] == True:
+        if condition[vare] == True:
           pass
         else:
           continue
@@ -1352,7 +1358,7 @@ def filepath(fp):
           res = lines.partition(wrd)[2]
           symbols = ["!=", "==", "isin", ">=", "<=", ">", "<"]
         else:
-          error("'whatif' statement must have an ending '}'!")
+          error("'condition' statement must have an ending '}'!")
           exit()
         
 
@@ -1419,7 +1425,5 @@ def filepath(fp):
 
 if __name__ == "__main__":
   #db = database()
-
-  
   
   filepath()

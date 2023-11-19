@@ -1,5 +1,5 @@
 function Fibonacci(num) {
-  whatif num <= 1 {
+  condition num <= 1 {
     return(num)
   }
   else {

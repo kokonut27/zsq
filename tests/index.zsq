@@ -18,7 +18,7 @@ print(^"{hi}")
 
 os.system("clear")
 
-whatif variable != true {
+condition variable == false {
   print("hello")
 }
 
