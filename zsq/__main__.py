@@ -38,6 +38,16 @@ bold = '\033[1m'
 end = '\033[0m'
 pink = '\033[95m'
 
+def varReplace(var):
+  var = var.replace(')','')
+  var = var.replace('\"',"")
+  var = var.replace('\'',"")
+  var = var.replace("\\n", "\n")
+  var = var.replace("\\t", "\t")
+  var = var.replace("\\)", ")")
+  var = var.replace("\\(", "(")
+  var = var.replace('\\"', '"')
+  var = var.replace("\\'", "'")
 
       
 # file errors
@@ -192,14 +202,7 @@ def filepath(fp):
         res = split_string[0]
 
         sq_str = res[0] == "^"
-        res = res.replace("\")","")
-        res = res.replace('\')',"")
-        res = res.replace("\\n", "\n")
-        res = res.replace("\\t", "\t")
-        res = res.replace("\\)", ")")
-        res = res.replace("\\(", "(")
-        res = res.replace('\\"', '"')
-        res = res.replace("\\'", "'")
+        varReplace(res)
         if color_module == 1:
           res = res.replace("{color.red}", red)
           res = res.replace("{color.blue}", blue)
@@ -481,15 +484,7 @@ def filepath(fp):
                   wrd = "prompt("
                   var = lines.partition(wrd)[2]
                   split_string = var.split(")", -1)
-                  var = var.replace(')','')
-                  var = var.replace('\"',"")
-                  var = var.replace('\'',"")
-                  var = var.replace("\\n", "\n")
-                  var = var.replace("\\t", "\t")
-                  var = var.replace("\\)", ")")
-                  var = var.replace("\\(", "(")
-                  var = var.replace('\\"', '"')
-                  var = var.replace("\\'", "'")
+                  varReplace(var)
                   # var = var = split_string[0]
                   # var = var.strip(")")
                   
@@ -501,15 +496,7 @@ def filepath(fp):
                   wrd = "prompt("
                   var = lines.partition(wrd)[2]
                   split_string = var.split(")", -1)
-                  var = var.replace(')','')
-                  var = var.replace('\"',"")
-                  var = var.replace('\'',"")
-                  var = var.replace("\\n", "\n")
-                  var = var.replace("\\t", "\t")
-                  var = var.replace("\\)", ")")
-                  var = var.replace("\\(", "(")
-                  var = var.replace('\\"', '"')
-                  var = var.replace("\\'", "'")
+                  varReplace(var)
                   # var = var = split_string[0]
                   # var = var.strip(")")
                   
@@ -567,15 +554,7 @@ def filepath(fp):
         wrd = "prompt("
         var = lines.partition(wrd)[2]
         split_string = var.split(")", -1)
-        var = var.replace(')','')
-        var = var.replace('\"',"")
-        var = var.replace('\'',"")
-        var = var.replace("\\n", "\n")
-        var = var.replace("\\t", "\t")
-        var = var.replace("\\)", ")")
-        var = var.replace("\\(", "(")
-        var = var.replace('\\"', '"')
-        var = var.replace("\\'", "'")
+        varReplace(var)
         # var = var = split_string[0]
         # var = var.strip(")")
         
@@ -585,15 +564,7 @@ def filepath(fp):
         wrd = "cprompt("
         var = lines.partition(wrd)[2]
         split_string = var.split(")", -1)
-        var = var.replace(')','')
-        var = var.replace('\"',"")
-        var = var.replace('\'',"")
-        var = var.replace("\\n", "\n")
-        var = var.replace("\\t", "\t")
-        var = var.replace("\\)", ")")
-        var = var.replace("\\(", "(")
-        var = var.replace('\\"', '"')
-        var = var.replace("\\'", "'")
+        varReplace(var)
 
         getpass.getpass(prompt=var, stream=None)
         
@@ -691,13 +662,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               if var == str(vale):
                 condition[vare] = False
@@ -708,13 +673,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             if var == str(vale):
               condition[vare] = False
@@ -807,13 +766,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               if var == str(vale):
                 condition[vare] = True
@@ -824,13 +777,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             if var == str(vale):
               condition[vare] = True
@@ -908,13 +855,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               if var in str(vale):
                 condition[vare] = True
@@ -925,14 +866,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
-            
+            varReplace(vale)
             if var in str(vale):
               condition[vare] = True
             else:
@@ -1009,13 +943,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               error("variables cannot be greater than or equal to a string!")
               exit()
@@ -1024,13 +952,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             error("variables cannot be greater than or equal to a string!")
             exit()
@@ -1108,13 +1030,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               error("variables cannot be less than or equal to a string!")
               exit()
@@ -1123,13 +1039,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             error("variables cannot be less than or equal to a string!")
             exit()
@@ -1207,13 +1117,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               error("variables cannot be less than a string!")
               exit()
@@ -1223,13 +1127,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             error("variables cannot be less than a string!")
             exit()
@@ -1307,13 +1205,7 @@ def filepath(fp):
               vale = vale[e+1:]
               b = vale.find("'")
               vale = vale[:b]
-              vale = vale.replace("'", "")
-              vale = vale.replace("\"", "")
-              vale = vale.replace("'", "")
-              vale = vale.replace("\\n", "\n")
-              vale = vale.replace("\\t", "\t")
-              vale = vale.replace("\\'", "'")
-              vale = vale.replace('\\"', "")
+              varReplace(vale)
               
               error("variables cannot be greater than a string!")
               exit()
@@ -1322,13 +1214,7 @@ def filepath(fp):
             vale = vale[e+1:]
             b = vale.find('"')
             vale = vale[:b]
-            vale = vale.replace("'", "")
-            vale = vale.replace("\"", "")
-            vale = vale.replace('"', "")
-            vale = vale.replace("\\n", "\n")
-            vale = vale.replace("\\t", "\t")
-            vale = vale.replace("\\'", "'")
-            vale = vale.replace('\\"', "")
+            varReplace(vale)
             
             error("variables cannot be greater than a string!")
             exit()
