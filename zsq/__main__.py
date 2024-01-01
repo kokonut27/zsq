@@ -389,28 +389,8 @@ def filepath(fp):
             find_space1 = newvar.find("\'")
             if find_space1 == -1:
               # print("hello")
-              if "1" in newvar:
-                newvar_type = int
-                # print("hello")
-              elif "2" in newvar:
-                newvar_type = int
-              elif "3" in newvar:
-                newvar_type = int
-              elif "4" in newvar:
-                newvar_type = int
-              elif "5" in newvar:
-                newvar_type = int
-              elif "6" in newvar:
-                newvar_type = int
-              elif "7" in newvar:
-                newvar_type = int
-              elif "8" in newvar:
-                newvar_type = int
-              elif "9" in newvar:
-                newvar_type = int
-              elif "0" in newvar:
-                newvar_type = int
-              else:
+              if newvar.isnumeric(): # edit these lines to use the isnumeric function
+                newvar_type = True
                 if "true" in newvar or "false" in newvar:
                   newvar_type = bool
                 else:
