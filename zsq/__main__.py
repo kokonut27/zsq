@@ -390,7 +390,7 @@ def filepath(fp):
             if find_space1 == -1:
               # print("hello")
               if newvar.isnumeric(): # edit these lines to use the isnumeric function
-                newvar_type = True
+                newvar_type = int
                 if "true" in newvar or "false" in newvar:
                   newvar_type = bool
                 else:
